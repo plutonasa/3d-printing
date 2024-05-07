@@ -1,0 +1,3207 @@
+-------------------- Log Start | Tue May  7 02:34:38 2024 --------------------
+platform: Linux-6.1.21-v8+-aarch64-with-glibc2.31
+data_path: /home/plutonasa/printer_data
+is_default_data_path: False
+config_file: /home/plutonasa/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: True
+instance_uuid: 5c9b3819067a46c48b5e5922ec7f39ba
+unix_socket_path: /home/plutonasa/printer_data/comms/moonraker.sock
+software_version: v0.8.0-331-gc857e1a
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/plutonasa/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+launch_args: /home/plutonasa/moonraker-env/bin/python /home/plutonasa/moonraker/moonraker/__main__.py
+msgspec_enabled: False
+uvloop_enabled: False
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = True
+
+[authorization]
+cors_domains = 
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	octoeverywhere
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
+install_script = tools/install.sh
+
+[update_manager Klipper-Adaptive-Meshing-Purging]
+type = git_repo
+channel = dev
+path = ~/Klipper-Adaptive-Meshing-Purging
+origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+managed_services = klipper
+primary_branch = main
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/plutonasa/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/plutonasa/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
+
+#################################################################
+All Configuration Files:
+/home/plutonasa/printer_data/config/moonraker.conf
+/home/plutonasa/printer_data/config/octoeverywhere-system.cfg
+#################################################################
+
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 46
+
+System Info:
+
+***python***
+  version: (3, 9, 2, 'final', 0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab159ee1
+  hardware_desc: BCM2835
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 3705532
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 41
+  manufacturer: Unknown
+  oem_id: 3432
+  product_name: SD16G
+  product_revision: 2.0
+  serial_number: 000012ce
+  manufacturer_date: 10/2018
+  capacity: 14.6 GiB
+  total_bytes: 15640559616
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {'name': 'MainsailOS', 'version_id': '1.3.2', 'codename': 'bullseye', 'id': 'mainsailos'}
+  kernel_version: 6.1.21-v8+
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Found libcamera Python module, version: v0.0.5+83-bde9b04f
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', 'network-online.target']
+**After=['basic.target', 'systemd-journald.socket', 'klipper.service', 'system.slice', 'sysinit.target', 'network-online.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/moonraker.env
+**ExecStart=/home/plutonasa/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=plutonasa
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['basic.target', 'system.slice', 'network-online.target', 'systemd-journald.socket', 'klipper-mcu.service', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/klipper.env
+**ExecStart=/home/plutonasa/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/plutonasa/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=plutonasa
+Git Repo moonraker: Warnings detected:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+Git Repo klipper: No warnings detected
+Git Repo mainsail-config: No warnings detected
+Git Repo crowsnest: No warnings detected
+Git Repo sonar: No warnings detected
+Git Repo Klipper-Adaptive-Meshing-Purging: No warnings detected
+Git Repo octoeverywhere: No warnings detected
+Klipper Version: v0.12.0-173-g0b329c5d
+2024-05-06 21:34:38,929 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 4.45ms
+2024-05-06 21:34:38,930 [websockets.py:open()] - Websocket Opened: ID: 547530739136, Proxied: True, User Agent: BBL-Slicer/v01.08.04.51 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 10.109.242.110
+2024-05-06 21:34:38,937 [websockets.py:_handle_identify()] - Websocket 547530739136 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 21:34:39,022 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.46ms
+2024-05-06 21:34:39,023 [websockets.py:open()] - Websocket Opened: ID: 547530308432, Proxied: True, User Agent: BBL-Slicer/v01.08.04.51 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 10.109.242.110
+2024-05-06 21:34:39,034 [websockets.py:_handle_identify()] - Websocket 547530308432 Client Identified - Name: mainsail, Version: 2.10.0, Type: web
+2024-05-06 21:37:30,959 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2024-05-06 21:37:52,536 [authorization.py:_prune_conn_handler()] - Trusted Connection Expired, IP: 127.0.0.1
+2024-05-06 21:38:47,996 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=------------------------e02da29c05fc2a01
+2024-05-06 21:38:48,128 [application.py:post()] - Processing Uploaded File: z wobble - tower_0.2mm_PLA_Elegoo Neptune 4 Pro_25m11s.gcode
+2024-05-06 21:38:48,600 [shell_command.py:pipe_data_received()] - INFO:metadata:Object Processing is enabled
+
+2024-05-06 21:38:48,613 [shell_command.py:pipe_data_received()] - INFO:metadata:File 'z wobble - tower_0.2mm_PLA_Elegoo Neptune 4 Pro_25m11s.gcode' currently supports cancellation, processing aborted
+
+2024-05-06 21:38:48,771 [shell_command.py:_check_proc_success()] - Command (/home/plutonasa/moonraker-env/bin/python /home/plutonasa/moonraker/moonraker/components/file_manager/metadata.py -p /home/plutonasa/printer_data/gcodes -f "z wobble - tower_0.2mm_PLA_Elegoo Neptune 4 Pro_25m11s.gcode" --check-objects) successfully finished
+2024-05-06 21:38:48,771 [klippy_apis.py:start_print()] - Requesting Job Start, filename = z wobble - tower_0.2mm_PLA_Elegoo Neptune 4 Pro_25m11s.gcode
+2024-05-06 21:38:48,791 [application.py:log_request()] - 201 POST /api/files/local (10.109.242.125) [_TRUSTED_USER_] 797.59ms
+2024-05-06 21:38:48,828 [job_state.py:_status_update()] - Job Started: z wobble - tower_0.2mm_PLA_Elegoo Neptune 4 Pro_25m11s.gcode
+2024-05-06 21:55:59,821 [klippy_apis.py:pause_print()] - Requesting job pause...
+2024-05-06 21:56:00,944 [klippy_apis.py:cancel_print()] - Requesting job cancel...
+2024-05-06 21:57:05,299 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 21:57:05,320 [websockets.py:on_close()] - Websocket Closed: ID: 547530602960 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 3.65
+2024-05-06 21:57:07,336 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-05-06 21:57:07,340 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 5.79ms
+2024-05-06 21:57:07,341 [websockets.py:open()] - Websocket Opened: ID: 547512695152, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 21:57:07,349 [websockets.py:_handle_identify()] - Websocket 547512695152 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 21:57:07,827 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 21:57:10,829 [klippy_connection.py:close()] - Error closing Klippy Unix Socket
+Traceback (most recent call last):
+  File "/home/plutonasa/moonraker/moonraker/components/klippy_connection.py", line 202, in _write_request
+    await self.writer.drain()
+  File "/usr/lib/python3.9/asyncio/streams.py", line 387, in drain
+    await self._protocol._drain_helper()
+  File "/usr/lib/python3.9/asyncio/streams.py", line 190, in _drain_helper
+    raise ConnectionResetError('Connection lost')
+ConnectionResetError: Connection lost
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/plutonasa/moonraker/moonraker/components/klippy_connection.py", line 769, in close
+    await self.writer.wait_closed()
+  File "/usr/lib/python3.9/asyncio/streams.py", line 359, in wait_closed
+    await self._protocol._get_close_waiter(self)
+  File "/usr/lib/python3.9/asyncio/selector_events.py", line 918, in write
+    n = self._sock.send(data)
+BrokenPipeError: [Errno 32] Broken pipe
+2024-05-06 21:57:10,829 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 21:57:10,830 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Write Request Error
+2024-05-06 21:57:10,830 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.info, Code: 503, Message: Klippy Write Request Error
+2024-05-06 21:57:10,835 [websockets.py:on_close()] - Websocket Closed: ID: 547512695152 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 3.50
+2024-05-06 21:57:11,586 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 21:57:11,894 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 21:57:11,896 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 21:57:11,898 [klippy_connection.py:_check_ready()] - 
+Unable to open config file /home/plutonasa/printer_data/config/chopper_tune.cfg
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+Printer is halted
+
+2024-05-06 21:57:12,848 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 1.73ms
+2024-05-06 21:57:12,848 [websockets.py:open()] - Websocket Opened: ID: 547487300480, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 21:57:12,860 [websockets.py:_handle_identify()] - Websocket 547487300480 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 21:57:15,615 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2024-05-06 21:57:15,721 [websockets.py:on_close()] - Websocket Closed: ID: 547530604496 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 2.16
+2024-05-06 21:57:15,722 [websockets.py:on_close()] - Websocket Closed: ID: 547530618288 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 2.98
+2024-05-06 21:57:15,722 [websockets.py:on_close()] - Websocket Closed: ID: 547530308432 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 6.70
+2024-05-06 21:57:15,724 [websockets.py:on_close()] - Websocket Closed: ID: 547530739136 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 6.79
+2024-05-06 21:57:15,726 [websockets.py:on_close()] - Websocket Closed: ID: 547487300480 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 2.88
+2024-05-06 21:57:15,729 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 21:57:15,739 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 33
+overflow_pages: 0
+entries: 65
+history:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 43
+overflow_pages: 0
+entries: 83
+mainsail:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 9
+mobileraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 2
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 8
+octoeverywhere:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+update_manager:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 4
+overflow_pages: 0
+entries: 9
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2024-05-06 21:57:15,741 [update_manager.py:close()] - Failed to write/close shared memory
+Traceback (most recent call last):
+  File "/home/plutonasa/moonraker/moonraker/components/update_manager/update_manager.py", line 753, in close
+    self.shm.unlink()
+  File "/usr/lib/python3.9/multiprocessing/shared_memory.py", line 241, in unlink
+    _posixshmem.shm_unlink(self._name)
+FileNotFoundError: [Errno 2] No such file or directory: '/moonraker_instance_ids'
+2024-05-06 21:57:15,745 [server.py:main()] - Server Shutdown
+-------------------- Log Start | Tue May  7 02:57:18 2024 --------------------
+platform: Linux-6.1.21-v8+-aarch64-with-glibc2.31
+data_path: /home/plutonasa/printer_data
+is_default_data_path: False
+config_file: /home/plutonasa/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: True
+instance_uuid: 5c9b3819067a46c48b5e5922ec7f39ba
+unix_socket_path: /home/plutonasa/printer_data/comms/moonraker.sock
+software_version: v0.8.0-331-gc857e1a
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/plutonasa/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+launch_args: /home/plutonasa/moonraker-env/bin/python /home/plutonasa/moonraker/moonraker/__main__.py
+msgspec_enabled: False
+uvloop_enabled: False
+2024-05-06 21:57:18,323 [confighelper.py:read_file()] - Configuration File '/home/plutonasa/printer_data/config/moonraker.conf' parsed, total size: 3532 B
+2024-05-06 21:57:18,324 [server.py:add_log_rollover_item()] - 
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = True
+
+[authorization]
+cors_domains = 
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	octoeverywhere
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
+install_script = tools/install.sh
+
+[update_manager Klipper-Adaptive-Meshing-Purging]
+type = git_repo
+channel = dev
+path = ~/Klipper-Adaptive-Meshing-Purging
+origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+managed_services = klipper
+primary_branch = main
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/plutonasa/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/plutonasa/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
+
+[update_manager chopper-resonance-tuner]
+type = git_repo
+path = .
+origin = https://github.com/MRX8024/chopper-resonance-tuner.git
+primary_branch = main
+managed_services = klipper
+
+#################################################################
+All Configuration Files:
+/home/plutonasa/printer_data/config/moonraker.conf
+/home/plutonasa/printer_data/config/octoeverywhere-system.cfg
+#################################################################
+2024-05-06 21:57:18,398 [server.py:load_component()] - Component (secrets) loaded
+2024-05-06 21:57:18,404 [server.py:load_component()] - Component (template) loaded
+2024-05-06 21:57:18,410 [server.py:load_component()] - Component (klippy_connection) loaded
+2024-05-06 21:57:18,714 [server.py:load_component()] - Component (application) loaded
+2024-05-06 21:57:18,738 [server.py:load_component()] - Component (websockets) loaded
+2024-05-06 21:57:18,780 [server.py:load_component()] - Component (dbus_manager) loaded
+2024-05-06 21:57:18,791 [server.py:add_log_rollover_item()] - 
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 46
+2024-05-06 21:57:18,812 [server.py:load_component()] - Component (database) loaded
+2024-05-06 21:57:18,832 [file_manager.py:__init__()] - Using File System Observer: inotify
+2024-05-06 21:57:18,856 [server.py:load_component()] - Component (file_manager) loaded
+2024-05-06 21:57:18,884 [authorization.py:__init__()] - Authorization Configuration Loaded
+Trusted Clients:
+10.0.0.0/8
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.168.0.0/16
+fe80::/10
+::1/128
+CORS Domains:
+https://my\.mainsail\.xyz
+http://my\.mainsail\.xyz
+http://.*\.local
+http://.*\.lan
+2024-05-06 21:57:18,889 [server.py:load_component()] - Component (authorization) loaded
+2024-05-06 21:57:18,894 [server.py:load_component()] - Component (klippy_apis) loaded
+2024-05-06 21:57:19,109 [server.py:add_log_rollover_item()] - 
+System Info:
+
+***python***
+  version: (3, 9, 2, 'final', 0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab159ee1
+  hardware_desc: BCM2835
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 3705532
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 41
+  manufacturer: Unknown
+  oem_id: 3432
+  product_name: SD16G
+  product_revision: 2.0
+  serial_number: 000012ce
+  manufacturer_date: 10/2018
+  capacity: 14.6 GiB
+  total_bytes: 15640559616
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {'name': 'MainsailOS', 'version_id': '1.3.2', 'codename': 'bullseye', 'id': 'mainsailos'}
+  kernel_version: 6.1.21-v8+
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+2024-05-06 21:57:19,115 [server.py:load_component()] - Component (shell_command) loaded
+2024-05-06 21:57:19,116 [machine.py:__init__()] - Using System Provider: systemd_dbus
+2024-05-06 21:57:19,188 [server.py:add_log_rollover_item()] - Found libcamera Python module, version: v0.0.5+83-bde9b04f
+2024-05-06 21:57:19,190 [server.py:load_component()] - Component (machine) loaded
+2024-05-06 21:57:19,193 [server.py:load_component()] - Component (data_store) loaded
+2024-05-06 21:57:19,196 [proc_stats.py:__init__()] - Detected 'vcgencmd', throttle checking enabled
+2024-05-06 21:57:19,197 [server.py:load_component()] - Component (proc_stats) loaded
+2024-05-06 21:57:19,199 [server.py:load_component()] - Component (job_state) loaded
+2024-05-06 21:57:19,204 [server.py:load_component()] - Component (job_queue) loaded
+2024-05-06 21:57:19,211 [server.py:load_component()] - Component (http_client) loaded
+2024-05-06 21:57:19,217 [server.py:load_component()] - Component (announcements) loaded
+2024-05-06 21:57:19,221 [server.py:load_component()] - Component (webcam) loaded
+2024-05-06 21:57:19,224 [server.py:load_component()] - Component (extensions) loaded
+2024-05-06 21:57:19,231 [server.py:load_component()] - Component (octoprint_compat) loaded
+2024-05-06 21:57:19,236 [server.py:load_component()] - Component (history) loaded
+2024-05-06 21:57:19,294 [base_deploy.py:log_info()] - Git Repo moonraker: Detected virtualenv: /home/plutonasa/moonraker-env
+2024-05-06 21:57:19,301 [base_deploy.py:log_info()] - Git Repo klipper: Detected virtualenv: /home/plutonasa/klippy-env
+2024-05-06 21:57:19,314 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Option 'env' is deprecated, use 'virtualenv' instead.
+2024-05-06 21:57:19,316 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Detected virtualenv: /home/plutonasa/octoeverywhere-env
+2024-05-06 21:57:19,335 [server.py:load_component()] - Component (update_manager) loaded
+2024-05-06 21:57:19,337 [server.py:_initialize_component()] - Performing Component Post Init: [dbus_manager]
+2024-05-06 21:57:19,354 [server.py:_initialize_component()] - Performing Component Post Init: [file_manager]
+2024-05-06 21:57:19,435 [server.py:_initialize_component()] - Performing Component Post Init: [authorization]
+2024-05-06 21:57:19,436 [server.py:_initialize_component()] - Performing Component Post Init: [machine]
+2024-05-06 21:57:19,437 [machine.py:validation_init()] - Installation version in database up to date
+2024-05-06 21:57:19,712 [machine.py:check_virt_status()] - No Virtualization Detected
+2024-05-06 21:57:19,729 [machine.py:_find_public_ip()] - Detected Local IP: 10.109.242.110
+2024-05-06 21:57:19,732 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 21:57:19,796 [server.py:add_log_rollover_item()] - 
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', 'network-online.target']
+**After=['basic.target', 'systemd-journald.socket', 'klipper.service', 'system.slice', 'sysinit.target', 'network-online.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/moonraker.env
+**ExecStart=/home/plutonasa/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=plutonasa
+2024-05-06 21:57:19,797 [server.py:_initialize_component()] - Performing Component Post Init: [proc_stats]
+2024-05-06 21:57:19,797 [server.py:_initialize_component()] - Performing Component Post Init: [announcements]
+2024-05-06 21:57:19,800 [server.py:_initialize_component()] - Performing Component Post Init: [webcam]
+2024-05-06 21:57:19,800 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 21:57:19,802 [server.py:_initialize_component()] - Performing Component Post Init: [klippy_connection]
+2024-05-06 21:57:19,802 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['basic.target', 'system.slice', 'network-online.target', 'systemd-journald.socket', 'klipper-mcu.service', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/klipper.env
+**ExecStart=/home/plutonasa/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/plutonasa/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=plutonasa
+2024-05-06 21:57:19,802 [server.py:_initialize_component()] - Performing Component Post Init: [history]
+2024-05-06 21:57:19,806 [server.py:_initialize_component()] - Performing Component Post Init: [update_manager]
+2024-05-06 21:57:19,859 [base_deploy.py:log_info()] - PackageDeploy: PackageKit Provider Configured
+2024-05-06 21:57:19,860 [base_deploy.py:log_info()] - Git Repo moonraker: Stored pip version: 23.3.2
+2024-05-06 21:57:19,862 [base_deploy.py:log_info()] - Git Repo klipper: Stored pip version: 23.3.2
+2024-05-06 21:57:19,876 [confighelper.py:create_backup()] - Backing up last working configuration to '/home/plutonasa/printer_data/config/.moonraker.conf.bkp'
+2024-05-06 21:57:19,888 [extensions.py:start_unix_server()] - Creating Unix Domain Socket at '/home/plutonasa/printer_data/comms/moonraker.sock'
+2024-05-06 21:57:19,892 [server.py:start_server()] - Starting Moonraker on (0.0.0.0, 7125), Hostname: mainsailEnder
+2024-05-06 21:57:19,893 [application.py:listen()] - SSL Certificate/Key not configured, aborting HTTPS Server startup
+2024-05-06 21:57:20,146 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 21:57:20,462 [server.py:add_log_rollover_item()] - Klipper Version: v0.12.0-173-g0b329c5d
+2024-05-06 21:57:20,474 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 21:57:20,475 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 21:57:20,477 [klippy_connection.py:_check_ready()] - 
+Unable to open config file /home/plutonasa/printer_data/config/chopper_tune.cfg
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+Printer is halted
+
+2024-05-06 21:57:20,837 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 10.109.242.125
+2024-05-06 21:57:20,841 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 6.12ms
+2024-05-06 21:57:20,841 [websockets.py:open()] - Websocket Opened: ID: 548167081552, Proxied: True, User Agent: BBL-Slicer/v01.08.04.51 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 10.109.242.110
+2024-05-06 21:57:20,844 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 8.03ms
+2024-05-06 21:57:20,845 [websockets.py:open()] - Websocket Opened: ID: 548149408192, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 21:57:20,847 [websockets.py:_handle_identify()] - Websocket 548167081552 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 21:57:20,849 [websockets.py:_handle_identify()] - Websocket 548149408192 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 21:57:21,758 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-05-06 21:57:21,759 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.19ms
+2024-05-06 21:57:21,759 [websockets.py:open()] - Websocket Opened: ID: 548149410976, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 21:57:21,768 [websockets.py:_handle_identify()] - Websocket 548149410976 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 21:57:47,276 [base_deploy.py:log_info()] - PackageKit: Detected 9 package updates:
+less
+libc-bin
+libc-dev-bin
+libc-devtools
+libc-l10n
+libc6
+libc6-dbg
+libc6-dev
+locales
+2024-05-06 21:57:47,316 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker status --porcelain -b) successfully finished
+2024-05-06 21:57:47,337 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker branch --list --no-color) successfully finished
+2024-05-06 21:57:47,372 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker remote get-url origin) successfully finished
+2024-05-06 21:57:48,825 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker fetch origin --prune --progress) successfully finished
+2024-05-06 21:57:48,843 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 21:57:48,865 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-parse HEAD) successfully finished
+2024-05-06 21:57:48,894 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:57:48,914 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-parse origin/master) successfully finished
+2024-05-06 21:57:48,944 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 21:57:48,965 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-list HEAD..ba9428558adc70ed8cb3cdcea1723358ead23741 --count) successfully finished
+2024-05-06 21:57:48,997 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker log c857e1a99f76777a3247bc47bfe5a5fceeaad947..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2024-05-06 21:57:49,067 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 21:57:49,069 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/plutonasa/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: c857e1a99f76777a3247bc47bfe5a5fceeaad947
+Upstream Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Current Version: v0.8.0-331-gc857e1a9
+Upstream Version: v0.8.0-354-gba942855
+Rollback Commit: a3e4dac5fb20f8dfc0857a252eef5219d5e0ec4c
+Rollback Branch: master
+Rollback Version: v0.8.0-324-ga3e4dac5
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 23
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-05-06 21:57:49,070 [base_deploy.py:log_info()] - Git Repo moonraker: Channel: dev
+2024-05-06 21:57:49,070 [base_deploy.py:log_info()] - Git Repo moonraker: Validity check for git repo passed
+2024-05-06 21:57:49,137 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper status --porcelain -b) successfully finished
+2024-05-06 21:57:49,152 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper branch --list --no-color) successfully finished
+2024-05-06 21:57:49,185 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper remote get-url origin) successfully finished
+2024-05-06 21:58:02,702 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper fetch origin --prune --progress) successfully finished
+2024-05-06 21:58:02,719 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 21:58:02,735 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-parse HEAD) successfully finished
+2024-05-06 21:58:02,841 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:58:02,856 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-parse origin/master) successfully finished
+2024-05-06 21:58:02,959 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 21:58:02,982 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-list HEAD..434770eaf9d382cccba203a3475ace2dc0653d7b --count) successfully finished
+2024-05-06 21:58:03,005 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper log 0b329c5d28230e8ad19434840bde26f5fd332998..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2024-05-06 21:58:03,144 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 21:58:03,145 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/plutonasa/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Recovery URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 0b329c5d28230e8ad19434840bde26f5fd332998
+Upstream Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Current Version: v0.12.0-173-g0b329c5d
+Upstream Version: v0.12.0-179-g434770ea
+Rollback Commit: 5e280680c54efb594f312aacea585851d4956d66
+Rollback Branch: master
+Rollback Version: v0.12.0-138-g5e280680
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 6
+Diverged: False
+2024-05-06 21:58:03,145 [base_deploy.py:log_info()] - Git Repo klipper: Channel: dev
+2024-05-06 21:58:03,146 [base_deploy.py:log_info()] - Git Repo klipper: Validity check for git repo passed
+2024-05-06 21:58:03,147 [base_deploy.py:log_info()] - Web Client mainsail: Invalid Installation, aborting remote refresh
+2024-05-06 21:58:03,147 [base_deploy.py:log_info()] - Web Client mainsail: Detected
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/plutonasa/mainsail
+Local Version: v2.10.0
+Remote Version: v2.10.0
+Valid: False
+Fallback Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.10.0/mainsail.zip
+Download Size: 2081565
+Content Type: application/zip
+Rollback Version: v2.9.1
+Rollback Repo: mainsail-crew/mainsail
+Warnings:
+ Location at option 'path: /home/plutonasa/mainsail' is not writable.
+ Failed to validate installation
+2024-05-06 21:58:03,221 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config status --porcelain -b) successfully finished
+2024-05-06 21:58:03,237 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config branch --list --no-color) successfully finished
+2024-05-06 21:58:03,269 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config remote get-url origin) successfully finished
+2024-05-06 21:58:03,797 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config fetch origin --prune --progress) successfully finished
+2024-05-06 21:58:03,813 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 21:58:03,827 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config rev-parse HEAD) successfully finished
+2024-05-06 21:58:03,845 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:58:03,864 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config rev-parse origin/master) successfully finished
+2024-05-06 21:58:03,882 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 21:58:03,898 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config rev-list HEAD..e57810d51b5c634aadaca4db923bfcba269ae4b3 --count) successfully finished
+2024-05-06 21:58:03,898 [git_deploy.py:log_repo_info()] - Git Repo mainsail-config Detected:
+Owner: mainsail-crew
+Repository Name: mainsail-config
+Path: /home/plutonasa/mainsail-config
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/mainsail-config.git
+Recovery URL: https://github.com/mainsail-crew/mainsail-config.git
+Current Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Upstream Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Current Version: v1.2.1-0-ge57810d5
+Upstream Version: v1.2.1-0-ge57810d5
+Rollback Commit: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Rollback Branch: master
+Rollback Version: v1.2.1-0-ge57810d5
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 21:58:03,899 [base_deploy.py:log_info()] - Git Repo mainsail-config: Channel: dev
+2024-05-06 21:58:03,899 [base_deploy.py:log_info()] - Git Repo mainsail-config: Validity check for git repo passed
+2024-05-06 21:58:03,958 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest status --porcelain -b) successfully finished
+2024-05-06 21:58:03,975 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest branch --list --no-color) successfully finished
+2024-05-06 21:58:04,005 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest remote get-url origin) successfully finished
+2024-05-06 21:58:04,832 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest fetch origin --prune --progress) successfully finished
+2024-05-06 21:58:04,854 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 21:58:04,880 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-parse HEAD) successfully finished
+2024-05-06 21:58:04,912 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:58:04,929 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-parse origin/master) successfully finished
+2024-05-06 21:58:04,954 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 21:58:04,975 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-list HEAD..d75a3aeb018384e59d03518754f6148c98894ed9 --count) successfully finished
+2024-05-06 21:58:04,996 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest log 6ac4711e17f6f7c51998d1f928166fdaee383bf7..origin/master --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2024-05-06 21:58:05,031 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 21:58:05,032 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/plutonasa/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
+Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Current Version: v4.1.8-1-g6ac4711e
+Upstream Version: v4.1.9-1-gd75a3aeb
+Rollback Commit: e96cd46ffb4a42ae1fbf23118caa68dd0dac0597
+Rollback Branch: master
+Rollback Version: v4.1.6-1-ge96cd46f
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 4
+Diverged: False
+2024-05-06 21:58:05,032 [base_deploy.py:log_info()] - Git Repo crowsnest: Channel: dev
+2024-05-06 21:58:05,032 [base_deploy.py:log_info()] - Git Repo crowsnest: Validity check for git repo passed
+2024-05-06 21:58:05,069 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar status --porcelain -b) successfully finished
+2024-05-06 21:58:05,088 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar branch --list --no-color) successfully finished
+2024-05-06 21:58:05,122 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar remote get-url origin) successfully finished
+2024-05-06 21:58:05,657 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar fetch origin --prune --progress) successfully finished
+2024-05-06 21:58:05,674 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar merge-base --is-ancestor HEAD origin/main) successfully finished
+2024-05-06 21:58:05,691 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar rev-parse HEAD) successfully finished
+2024-05-06 21:58:05,710 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:58:05,728 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar rev-parse origin/main) successfully finished
+2024-05-06 21:58:05,747 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar describe origin/main --always --tags --long --abbrev=8) successfully finished
+2024-05-06 21:58:05,772 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar rev-list HEAD..eacc498a52f79292063b6f9b0e0c191c34c5dc09 --count) successfully finished
+2024-05-06 21:58:05,774 [git_deploy.py:log_repo_info()] - Git Repo sonar Detected:
+Owner: mainsail-crew
+Repository Name: sonar
+Path: /home/plutonasa/sonar
+Remote: origin
+Branch: main
+Remote URL: https://github.com/mainsail-crew/sonar.git
+Recovery URL: https://github.com/mainsail-crew/sonar.git
+Current Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Upstream Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Current Version: v0.1.3-1-geacc498a
+Upstream Version: v0.1.3-1-geacc498a
+Rollback Commit: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Rollback Branch: main
+Rollback Version: v0.1.3-1-geacc498a
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 21:58:05,774 [base_deploy.py:log_info()] - Git Repo sonar: Channel: dev
+2024-05-06 21:58:05,774 [base_deploy.py:log_info()] - Git Repo sonar: Validity check for git repo passed
+2024-05-06 21:58:05,847 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging status --porcelain -b) successfully finished
+2024-05-06 21:58:05,875 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging branch --list --no-color) successfully finished
+2024-05-06 21:58:05,912 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging remote get-url origin) successfully finished
+2024-05-06 21:58:06,428 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging fetch origin --prune --progress) successfully finished
+2024-05-06 21:58:06,447 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging merge-base --is-ancestor HEAD origin/main) successfully finished
+2024-05-06 21:58:06,464 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging rev-parse HEAD) successfully finished
+2024-05-06 21:58:06,510 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:58:06,529 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging rev-parse origin/main) successfully finished
+2024-05-06 21:58:06,550 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging describe origin/main --always --tags --long --abbrev=8) successfully finished
+2024-05-06 21:58:06,569 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging rev-list HEAD..d657271f13fc429b5ca36a4f8956b67c9ddf0558 --count) successfully finished
+2024-05-06 21:58:06,570 [git_deploy.py:log_repo_info()] - Git Repo Klipper-Adaptive-Meshing-Purging Detected:
+Owner: kyleisah
+Repository Name: Klipper-Adaptive-Meshing-Purging
+Path: /home/plutonasa/Klipper-Adaptive-Meshing-Purging
+Remote: origin
+Branch: main
+Remote URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Recovery URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Current Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Upstream Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Current Version: v1.1.2-12-gd657271f
+Upstream Version: v1.1.2-12-gd657271f
+Rollback Commit: c58f3d31adb16eaf963b84cb35c8ca72cc736245
+Rollback Branch: main
+Rollback Version: v1.1.2-8-gc58f3d31
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 21:58:06,571 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Channel: dev
+2024-05-06 21:58:06,571 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Validity check for git repo passed
+2024-05-06 21:58:06,699 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere status --porcelain -b) successfully finished
+2024-05-06 21:58:06,715 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere branch --list --no-color) successfully finished
+2024-05-06 21:58:06,750 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere remote get-url origin) successfully finished
+2024-05-06 21:58:07,743 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere fetch origin --prune --progress) successfully finished
+2024-05-06 21:58:07,763 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 21:58:07,785 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere rev-parse HEAD) successfully finished
+2024-05-06 21:58:07,809 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 21:58:07,836 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 21:58:07,861 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere rev-list HEAD..fdcf10df7c4fd08560af8ac970c4142dfee343fa --count) successfully finished
+2024-05-06 21:58:07,889 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere log 70eeaabc2456d94503c12c8468d4d0537cd3819c..fdcf10df7c4fd08560af8ac970c4142dfee343fa --format="sha:%H%x1Dauthor:%an%x1Ddate:%ct%x1Dsubject:%s%x1Dmessage:%b%x1E" --max-count=100) successfully finished
+2024-05-06 21:58:07,915 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 21:58:07,916 [git_deploy.py:log_repo_info()] - Git Repo octoeverywhere Detected:
+Owner: QuinnDamerell
+Repository Name: OctoPrint-OctoEverywhere
+Path: /home/plutonasa/octoeverywhere
+Remote: origin
+Branch: master
+Remote URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Recovery URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Current Commit SHA: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Upstream Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Current Version: 3.2.1-14-g70eeaabc
+Upstream Version: 3.3.3
+Rollback Commit: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Rollback Branch: master
+Rollback Version: 3.2.1-14-g70eeaabc
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 8
+Diverged: False
+2024-05-06 21:58:07,916 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Channel: beta
+2024-05-06 21:58:07,916 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Validity check for git repo passed
+2024-05-06 21:58:07,918 [git_deploy.py:_check_repo_status()] - Git Repo chopper-resonance-tuner: path '/' is not a valid git repo
+2024-05-06 21:58:07,918 [git_deploy.py:refresh_repo_state()] - Git Repo chopper-resonance-tuner: Initialization failure
+Traceback (most recent call last):
+  File "/home/plutonasa/moonraker/moonraker/components/update_manager/git_deploy.py", line 313, in refresh_repo_state
+    self._verify_repo()
+  File "/home/plutonasa/moonraker/moonraker/components/update_manager/git_deploy.py", line 724, in _verify_repo
+    raise self.server.error(
+moonraker.utils.ServerError: Git Repo chopper-resonance-tuner: repo not initialized
+2024-05-06 21:58:07,918 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Channel: dev
+2024-05-06 21:58:07,918 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Repo validation check failed, updates disabled
+2024-05-06 22:31:03,943 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 4.93ms
+2024-05-06 22:31:03,945 [websockets.py:open()] - Websocket Opened: ID: 548149409392, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 22:31:03,950 [websockets.py:_handle_identify()] - Websocket 548149409392 Client Identified - Name: mainsail, Version: 2.10.0, Type: web
+2024-05-06 22:31:12,504 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 22:31:12,509 [websockets.py:on_close()] - Websocket Closed: ID: 548149410976 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 0.75
+2024-05-06 22:31:13,765 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 22:31:14,522 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.39ms
+2024-05-06 22:31:14,523 [websockets.py:open()] - Websocket Opened: ID: 548167342208, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 22:31:14,530 [websockets.py:_handle_identify()] - Websocket 548167342208 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 22:31:16,357 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 22:31:16,358 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 22:31:16,361 [klippy_connection.py:_check_ready()] - 
+Failed automated reset of MCU 'mcu'
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Error configuring printer
+
+2024-05-06 22:32:43,421 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 22:32:43,432 [websockets.py:on_close()] - Websocket Closed: ID: 548167342208 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 8.90
+2024-05-06 22:32:44,692 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 22:32:45,453 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.38ms
+2024-05-06 22:32:45,453 [websockets.py:open()] - Websocket Opened: ID: 548149409536, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 22:32:45,462 [websockets.py:_handle_identify()] - Websocket 548149409536 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 22:32:48,389 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 22:32:48,391 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 22:32:48,640 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 22:32:48,900 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 22:32:49,398 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 22:33:15,285 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.update.recover, Code: 400, Message: Upater mainsail is not a Git Repo Type
+2024-05-06 22:33:49,814 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 22:33:49,824 [websockets.py:on_close()] - Websocket Closed: ID: 548149409536 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 4.37
+2024-05-06 22:33:51,076 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 22:33:51,841 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.58ms
+2024-05-06 22:33:51,841 [websockets.py:open()] - Websocket Opened: ID: 548148615344, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 22:33:51,848 [websockets.py:_handle_identify()] - Websocket 548148615344 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 22:33:54,785 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 22:33:54,786 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 22:33:55,037 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 22:33:55,302 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 22:33:55,802 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 22:34:01,866 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.update.recover, Code: 400, Message: Git Repo chopper-resonance-tuner: repo not initialized
+2024-05-06 22:37:04,166 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryNaratB8YuMmVCRJW
+2024-05-06 22:37:04,189 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:37:04,194 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:37:04,227 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 63.10ms
+2024-05-06 22:37:11,080 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarysAEEBV1Lj9qetzKH
+2024-05-06 22:37:11,088 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:37:11,089 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:37:11,091 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 12.09ms
+2024-05-06 22:37:21,701 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarysBgK34UKTIxOsSwi
+2024-05-06 22:37:21,719 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:37:21,723 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:37:21,726 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 28.29ms
+2024-05-06 22:37:37,848 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarybprXPtEQCnltBpHR
+2024-05-06 22:37:37,872 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:37:37,876 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:37:37,880 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 33.77ms
+2024-05-06 22:38:09,892 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryQ5zJLKA3lLbZQ9L4
+2024-05-06 22:38:09,912 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:38:09,917 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:38:09,922 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 31.99ms
+2024-05-06 22:38:36,918 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 22:38:36,927 [websockets.py:on_close()] - Websocket Closed: ID: 548148615344 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 5.08
+2024-05-06 22:38:38,181 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 22:38:38,943 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.52ms
+2024-05-06 22:38:38,944 [websockets.py:open()] - Websocket Opened: ID: 548148613712, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 22:38:38,951 [websockets.py:_handle_identify()] - Websocket 548148613712 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 22:38:41,883 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 22:38:41,884 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 22:38:42,134 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 22:38:42,394 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 22:38:42,891 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 22:39:05,593 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryOAuKLqubOkNPN7mD
+2024-05-06 22:39:05,610 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:39:05,613 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:39:05,617 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 26.77ms
+2024-05-06 22:43:23,724 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary4vIYNFSgtExmJ8op
+2024-05-06 22:43:23,742 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:43:23,745 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:43:23,748 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 26.83ms
+2024-05-06 22:43:29,022 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 22:43:29,030 [websockets.py:on_close()] - Websocket Closed: ID: 548148613712 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 0.08
+2024-05-06 22:43:30,284 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 22:43:31,046 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.05ms
+2024-05-06 22:43:31,047 [websockets.py:open()] - Websocket Opened: ID: 548147615872, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 22:43:31,054 [websockets.py:_handle_identify()] - Websocket 548147615872 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 22:43:34,043 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 22:43:34,045 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 22:43:34,294 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 22:43:34,554 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 22:43:35,054 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 22:44:47,001 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryVWApJI5CQZV5AFtF
+2024-05-06 22:44:47,015 [application.py:post()] - Processing Uploaded File: printer.cfg
+2024-05-06 22:44:47,018 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file printer.cfg forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:44:47,023 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 23.93ms
+2024-05-06 22:44:50,923 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarypgeVjNjSWUvIayvo
+2024-05-06 22:44:50,938 [application.py:post()] - Processing Uploaded File: printer.cfg
+2024-05-06 22:44:50,941 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file printer.cfg forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:44:50,945 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 23.77ms
+2024-05-06 22:45:07,107 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryqft9WCCcHRxLANrU
+2024-05-06 22:45:07,127 [application.py:post()] - Processing Uploaded File: printer.cfg
+2024-05-06 22:45:07,132 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file printer.cfg forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:45:07,135 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 30.51ms
+2024-05-06 22:47:04,280 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: machine.update.recover, Code: 400, Message: Upater mainsail is not a Git Repo Type
+2024-05-06 22:47:18,592 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 22:47:18,602 [websockets.py:on_close()] - Websocket Closed: ID: 548147615872 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 7.55
+2024-05-06 22:47:19,856 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 22:47:20,628 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 9.61ms
+2024-05-06 22:47:20,628 [websockets.py:open()] - Websocket Opened: ID: 548166777776, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 22:47:20,634 [websockets.py:_handle_identify()] - Websocket 548166777776 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 22:47:23,545 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 22:47:23,547 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 22:47:23,795 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 22:47:24,056 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 22:47:24,560 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 22:47:43,948 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryBd5nq45SYjAveByZ
+2024-05-06 22:47:43,965 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:47:43,968 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:47:43,972 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 26.07ms
+2024-05-06 22:47:47,478 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryVM2BXCw01efDjlED
+2024-05-06 22:47:47,487 [application.py:post()] - Processing Uploaded File: moonraker.conf
+2024-05-06 22:47:47,490 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file moonraker.conf forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:47:47,492 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 15.04ms
+2024-05-06 22:51:40,749 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarySUB6RjJySaJvZyDE
+2024-05-06 22:51:40,764 [application.py:post()] - Processing Uploaded File: timelapse1.cfg
+2024-05-06 22:51:40,929 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file timelapse1.cfg forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:51:40,933 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 186.45ms
+2024-05-06 22:51:42,874 [application.py:prepare()] - Upload Request Received from 10.109.242.125
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundarynuY8wHwroGGlr16k
+2024-05-06 22:51:42,886 [application.py:post()] - Processing Uploaded File: timelapse1.cfg
+2024-05-06 22:51:42,889 [web.py:log_exception()] - 403 POST /server/files/upload (10.109.242.125): Access to file timelapse1.cfg forbidden by reserved path 'update_manager chopper-resonance-tuner'
+2024-05-06 22:51:42,892 [application.py:log_request()] - 403 POST /server/files/upload (10.109.242.125) [_TRUSTED_USER_] 19.86ms
+2024-05-06 23:01:44,977 [websockets.py:on_close()] - Websocket Closed: ID: 548149408192 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 4.13
+2024-05-06 23:01:44,981 [websockets.py:on_close()] - Websocket Closed: ID: 548149409392 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 1.03
+2024-05-06 23:01:45,133 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 4.92ms
+2024-05-06 23:01:45,134 [websockets.py:open()] - Websocket Opened: ID: 548149411744, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:01:45,139 [websockets.py:_handle_identify()] - Websocket 548149411744 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:01:45,320 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 3.88ms
+2024-05-06 23:01:45,321 [websockets.py:open()] - Websocket Opened: ID: 548149409968, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:01:46,618 [websockets.py:_handle_identify()] - Websocket 548149409968 Client Identified - Name: mainsail, Version: 2.10.0, Type: web
+2024-05-06 23:01:56,955 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest fetch origin --prune --progress) successfully finished
+2024-05-06 23:01:56,971 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:01:57,527 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest pull --progress) successfully finished
+2024-05-06 23:01:57,547 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest status --porcelain -b) successfully finished
+2024-05-06 23:01:57,563 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest branch --list --no-color) successfully finished
+2024-05-06 23:01:57,593 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest remote get-url origin) successfully finished
+2024-05-06 23:01:57,610 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:01:57,625 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-parse HEAD) successfully finished
+2024-05-06 23:01:57,648 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:01:57,663 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-parse origin/master) successfully finished
+2024-05-06 23:01:57,684 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:01:57,701 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-list HEAD..d75a3aeb018384e59d03518754f6148c98894ed9 --count) successfully finished
+2024-05-06 23:01:57,702 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/plutonasa/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Current Version: v4.1.9-1-gd75a3aeb
+Upstream Version: v4.1.9-1-gd75a3aeb
+Rollback Commit: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
+Rollback Branch: master
+Rollback Version: v4.1.8-1-g6ac4711e
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:01:57,702 [base_deploy.py:log_info()] - Git Repo crowsnest: Channel: dev
+2024-05-06 23:01:57,702 [base_deploy.py:log_info()] - Git Repo crowsnest: Validity check for git repo passed
+2024-05-06 23:02:03,374 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper fetch origin --prune --progress) successfully finished
+2024-05-06 23:02:03,390 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:02:04,130 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper pull --progress) successfully finished
+2024-05-06 23:02:04,204 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper status --porcelain -b) successfully finished
+2024-05-06 23:02:04,243 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper branch --list --no-color) successfully finished
+2024-05-06 23:02:04,297 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper remote get-url origin) successfully finished
+2024-05-06 23:02:04,313 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:02:04,328 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-parse HEAD) successfully finished
+2024-05-06 23:02:04,427 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:02:04,442 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-parse origin/master) successfully finished
+2024-05-06 23:02:04,535 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:02:04,551 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-list HEAD..434770eaf9d382cccba203a3475ace2dc0653d7b --count) successfully finished
+2024-05-06 23:02:04,553 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/plutonasa/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Recovery URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Upstream Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Current Version: v0.12.0-179-g434770ea
+Upstream Version: v0.12.0-179-g434770ea
+Rollback Commit: 0b329c5d28230e8ad19434840bde26f5fd332998
+Rollback Branch: master
+Rollback Version: v0.12.0-173-g0b329c5d
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+2024-05-06 23:02:04,553 [base_deploy.py:log_info()] - Git Repo klipper: Channel: dev
+2024-05-06 23:02:04,553 [base_deploy.py:log_info()] - Git Repo klipper: Validity check for git repo passed
+2024-05-06 23:02:04,586 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 23:02:04,597 [websockets.py:on_close()] - Websocket Closed: ID: 548166777776 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 3.97
+2024-05-06 23:02:05,344 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 23:02:06,612 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.55ms
+2024-05-06 23:02:06,613 [websockets.py:open()] - Websocket Opened: ID: 548147098096, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:02:06,656 [websockets.py:_handle_identify()] - Websocket 548147098096 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 23:02:06,700 [server.py:add_log_rollover_item()] - Klipper Version: v0.12.0-179-g434770ea-dirty
+2024-05-06 23:02:09,250 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 23:02:09,251 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 23:02:09,501 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 23:02:09,761 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 23:02:10,261 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 23:02:14,349 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker fetch origin --prune --progress) successfully finished
+2024-05-06 23:02:14,366 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:02:14,918 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker pull --progress) successfully finished
+2024-05-06 23:02:14,971 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker status --porcelain -b) successfully finished
+2024-05-06 23:02:14,987 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker branch --list --no-color) successfully finished
+2024-05-06 23:02:15,016 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker remote get-url origin) successfully finished
+2024-05-06 23:02:15,035 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:02:15,066 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-parse HEAD) successfully finished
+2024-05-06 23:02:15,119 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:02:15,135 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-parse origin/master) successfully finished
+2024-05-06 23:02:15,161 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:02:15,178 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-list HEAD..ba9428558adc70ed8cb3cdcea1723358ead23741 --count) successfully finished
+2024-05-06 23:02:15,179 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/plutonasa/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Upstream Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Current Version: v0.8.0-354-gba942855
+Upstream Version: v0.8.0-354-gba942855
+Rollback Commit: c857e1a99f76777a3247bc47bfe5a5fceeaad947
+Rollback Branch: master
+Rollback Version: v0.8.0-331-gc857e1a9
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-05-06 23:02:15,180 [base_deploy.py:log_info()] - Git Repo moonraker: Channel: dev
+2024-05-06 23:02:15,180 [base_deploy.py:log_info()] - Git Repo moonraker: Validity check for git repo passed
+2024-05-06 23:02:15,210 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2024-05-06 23:02:15,317 [websockets.py:on_close()] - Websocket Closed: ID: 548167081552 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 4.47
+2024-05-06 23:02:15,318 [websockets.py:on_close()] - Websocket Closed: ID: 548149409968 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 9.99
+2024-05-06 23:02:15,320 [websockets.py:on_close()] - Websocket Closed: ID: 548149411744 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 0.17
+2024-05-06 23:02:15,321 [websockets.py:on_close()] - Websocket Closed: ID: 548147098096 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 8.71
+2024-05-06 23:02:15,323 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 23:02:15,333 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 33
+overflow_pages: 0
+entries: 65
+history:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 43
+overflow_pages: 0
+entries: 83
+mainsail:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 9
+mobileraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 2
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 8
+octoeverywhere:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+update_manager:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 4
+overflow_pages: 1
+entries: 10
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2024-05-06 23:02:15,338 [server.py:main()] - Server Shutdown
+-------------------- Log Start | Tue May  7 04:02:16 2024 --------------------
+platform: Linux-6.1.21-v8+-aarch64-with-glibc2.31
+data_path: /home/plutonasa/printer_data
+is_default_data_path: False
+config_file: /home/plutonasa/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: True
+instance_uuid: 5c9b3819067a46c48b5e5922ec7f39ba
+unix_socket_path: /home/plutonasa/printer_data/comms/moonraker.sock
+software_version: v0.8.0-354-gba94285
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/plutonasa/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+launch_args: /home/plutonasa/moonraker-env/bin/python /home/plutonasa/moonraker/moonraker/__main__.py
+msgspec_enabled: False
+uvloop_enabled: False
+2024-05-06 23:02:16,061 [confighelper.py:read_file()] - Configuration File '/home/plutonasa/printer_data/config/moonraker.conf' parsed, total size: 3532 B
+2024-05-06 23:02:16,062 [server.py:add_log_rollover_item()] - 
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = True
+
+[authorization]
+cors_domains = 
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	octoeverywhere
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
+install_script = tools/install.sh
+
+[update_manager Klipper-Adaptive-Meshing-Purging]
+type = git_repo
+channel = dev
+path = ~/Klipper-Adaptive-Meshing-Purging
+origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+managed_services = klipper
+primary_branch = main
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/plutonasa/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/plutonasa/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
+
+[update_manager chopper-resonance-tuner]
+type = git_repo
+path = .
+origin = https://github.com/MRX8024/chopper-resonance-tuner.git
+primary_branch = main
+managed_services = klipper
+
+#################################################################
+All Configuration Files:
+/home/plutonasa/printer_data/config/moonraker.conf
+/home/plutonasa/printer_data/config/octoeverywhere-system.cfg
+#################################################################
+2024-05-06 23:02:16,139 [server.py:load_component()] - Component (secrets) loaded
+2024-05-06 23:02:16,145 [server.py:load_component()] - Component (template) loaded
+2024-05-06 23:02:16,151 [server.py:load_component()] - Component (klippy_connection) loaded
+2024-05-06 23:02:16,469 [server.py:load_component()] - Component (application) loaded
+2024-05-06 23:02:16,485 [server.py:load_component()] - Component (websockets) loaded
+2024-05-06 23:02:16,523 [server.py:load_component()] - Component (dbus_manager) loaded
+2024-05-06 23:02:16,533 [server.py:add_log_rollover_item()] - 
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 46
+2024-05-06 23:02:16,546 [server.py:load_component()] - Component (database) loaded
+2024-05-06 23:02:16,629 [file_manager.py:__init__()] - Using File System Observer: inotify
+2024-05-06 23:02:16,652 [server.py:load_component()] - Component (file_manager) loaded
+2024-05-06 23:02:16,674 [authorization.py:__init__()] - Authorization Configuration Loaded
+Trusted Clients:
+10.0.0.0/8
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.168.0.0/16
+fe80::/10
+::1/128
+CORS Domains:
+https://my\.mainsail\.xyz
+http://my\.mainsail\.xyz
+http://.*\.local
+http://.*\.lan
+2024-05-06 23:02:16,678 [server.py:load_component()] - Component (authorization) loaded
+2024-05-06 23:02:16,689 [server.py:load_component()] - Component (klippy_apis) loaded
+2024-05-06 23:02:16,882 [server.py:add_log_rollover_item()] - 
+System Info:
+
+***python***
+  version: (3, 9, 2, 'final', 0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab159ee1
+  hardware_desc: BCM2835
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 3705532
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 41
+  manufacturer: Unknown
+  oem_id: 3432
+  product_name: SD16G
+  product_revision: 2.0
+  serial_number: 000012ce
+  manufacturer_date: 10/2018
+  capacity: 14.6 GiB
+  total_bytes: 15640559616
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {'name': 'MainsailOS', 'version_id': '1.3.2', 'codename': 'bullseye', 'id': 'mainsailos'}
+  kernel_version: 6.1.21-v8+
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+2024-05-06 23:02:16,887 [server.py:load_component()] - Component (shell_command) loaded
+2024-05-06 23:02:16,887 [machine.py:__init__()] - Using System Provider: systemd_dbus
+2024-05-06 23:02:16,949 [server.py:add_log_rollover_item()] - Found libcamera Python module, version: v0.0.5+83-bde9b04f
+2024-05-06 23:02:16,949 [server.py:load_component()] - Component (machine) loaded
+2024-05-06 23:02:16,952 [server.py:load_component()] - Component (data_store) loaded
+2024-05-06 23:02:16,954 [proc_stats.py:__init__()] - Detected 'vcgencmd', throttle checking enabled
+2024-05-06 23:02:16,955 [server.py:load_component()] - Component (proc_stats) loaded
+2024-05-06 23:02:16,963 [server.py:load_component()] - Component (job_state) loaded
+2024-05-06 23:02:16,974 [server.py:load_component()] - Component (job_queue) loaded
+2024-05-06 23:02:16,987 [server.py:load_component()] - Component (history) loaded
+2024-05-06 23:02:16,993 [server.py:load_component()] - Component (http_client) loaded
+2024-05-06 23:02:16,997 [server.py:load_component()] - Component (announcements) loaded
+2024-05-06 23:02:17,001 [server.py:load_component()] - Component (webcam) loaded
+2024-05-06 23:02:17,003 [server.py:load_component()] - Component (extensions) loaded
+2024-05-06 23:02:17,014 [server.py:load_component()] - Component (octoprint_compat) loaded
+2024-05-06 23:02:17,074 [base_deploy.py:log_info()] - Git Repo moonraker: Detected virtualenv: /home/plutonasa/moonraker-env
+2024-05-06 23:02:17,077 [base_deploy.py:log_info()] - Git Repo klipper: Detected virtualenv: /home/plutonasa/klippy-env
+2024-05-06 23:02:17,085 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Option 'env' is deprecated, use 'virtualenv' instead.
+2024-05-06 23:02:17,086 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Detected virtualenv: /home/plutonasa/octoeverywhere-env
+2024-05-06 23:02:17,092 [server.py:load_component()] - Component (update_manager) loaded
+2024-05-06 23:02:17,093 [server.py:_initialize_component()] - Performing Component Post Init: [dbus_manager]
+2024-05-06 23:02:17,105 [server.py:_initialize_component()] - Performing Component Post Init: [file_manager]
+2024-05-06 23:02:17,161 [server.py:_initialize_component()] - Performing Component Post Init: [authorization]
+2024-05-06 23:02:17,161 [server.py:_initialize_component()] - Performing Component Post Init: [machine]
+2024-05-06 23:02:17,162 [machine.py:validation_init()] - Installation version in database up to date
+2024-05-06 23:02:17,420 [machine.py:check_virt_status()] - No Virtualization Detected
+2024-05-06 23:02:17,435 [machine.py:_find_public_ip()] - Detected Local IP: 10.109.242.110
+2024-05-06 23:02:17,441 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 23:02:17,494 [server.py:add_log_rollover_item()] - 
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', 'network-online.target']
+**After=['basic.target', 'systemd-journald.socket', 'klipper.service', 'system.slice', 'sysinit.target', 'network-online.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/moonraker.env
+**ExecStart=/home/plutonasa/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=plutonasa
+2024-05-06 23:02:17,494 [server.py:_initialize_component()] - Performing Component Post Init: [proc_stats]
+2024-05-06 23:02:17,494 [server.py:_initialize_component()] - Performing Component Post Init: [history]
+2024-05-06 23:02:17,497 [server.py:_initialize_component()] - Performing Component Post Init: [announcements]
+2024-05-06 23:02:17,498 [server.py:_initialize_component()] - Performing Component Post Init: [webcam]
+2024-05-06 23:02:17,498 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 23:02:17,499 [server.py:_initialize_component()] - Performing Component Post Init: [klippy_connection]
+2024-05-06 23:02:17,500 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['basic.target', 'system.slice', 'network-online.target', 'systemd-journald.socket', 'klipper-mcu.service', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/klipper.env
+**ExecStart=/home/plutonasa/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/plutonasa/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=plutonasa
+2024-05-06 23:02:17,500 [server.py:_initialize_component()] - Performing Component Post Init: [update_manager]
+2024-05-06 23:02:17,552 [base_deploy.py:log_info()] - PackageDeploy: PackageKit Provider Configured
+2024-05-06 23:02:17,553 [base_deploy.py:log_info()] - Git Repo moonraker: Stored pip version: 23.3.2
+2024-05-06 23:02:17,554 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/plutonasa/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Upstream Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Current Version: v0.8.0-354-gba942855
+Upstream Version: v0.8.0-354-gba942855
+Rollback Commit: c857e1a99f76777a3247bc47bfe5a5fceeaad947
+Rollback Branch: master
+Rollback Version: v0.8.0-331-gc857e1a9
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-05-06 23:02:17,555 [base_deploy.py:log_info()] - Git Repo klipper: Stored pip version: 23.3.2
+2024-05-06 23:02:17,557 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/plutonasa/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Recovery URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Upstream Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Current Version: v0.12.0-179-g434770ea
+Upstream Version: v0.12.0-179-g434770ea
+Rollback Commit: 0b329c5d28230e8ad19434840bde26f5fd332998
+Rollback Branch: master
+Rollback Version: v0.12.0-173-g0b329c5d
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+2024-05-06 23:02:17,559 [base_deploy.py:log_info()] - Web Client mainsail: Detected
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/plutonasa/mainsail
+Local Version: v2.10.0
+Remote Version: v2.10.0
+Valid: False
+Fallback Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.10.0/mainsail.zip
+Download Size: 2081565
+Content Type: application/zip
+Rollback Version: v2.9.1
+Rollback Repo: mainsail-crew/mainsail
+Warnings:
+ Location at option 'path: /home/plutonasa/mainsail' is not writable.
+ Failed to validate installation
+2024-05-06 23:02:17,561 [git_deploy.py:log_repo_info()] - Git Repo mainsail-config Detected:
+Owner: mainsail-crew
+Repository Name: mainsail-config
+Path: /home/plutonasa/mainsail-config
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/mainsail-config.git
+Recovery URL: https://github.com/mainsail-crew/mainsail-config.git
+Current Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Upstream Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Current Version: v1.2.1-0-ge57810d5
+Upstream Version: v1.2.1-0-ge57810d5
+Rollback Commit: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Rollback Branch: master
+Rollback Version: v1.2.1-0-ge57810d5
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:02:17,563 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/plutonasa/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Current Version: v4.1.9-1-gd75a3aeb
+Upstream Version: v4.1.9-1-gd75a3aeb
+Rollback Commit: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
+Rollback Branch: master
+Rollback Version: v4.1.8-1-g6ac4711e
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:02:17,565 [git_deploy.py:log_repo_info()] - Git Repo sonar Detected:
+Owner: mainsail-crew
+Repository Name: sonar
+Path: /home/plutonasa/sonar
+Remote: origin
+Branch: main
+Remote URL: https://github.com/mainsail-crew/sonar.git
+Recovery URL: https://github.com/mainsail-crew/sonar.git
+Current Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Upstream Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Current Version: v0.1.3-1-geacc498a
+Upstream Version: v0.1.3-1-geacc498a
+Rollback Commit: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Rollback Branch: main
+Rollback Version: v0.1.3-1-geacc498a
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:02:17,569 [git_deploy.py:log_repo_info()] - Git Repo Klipper-Adaptive-Meshing-Purging Detected:
+Owner: kyleisah
+Repository Name: Klipper-Adaptive-Meshing-Purging
+Path: /home/plutonasa/Klipper-Adaptive-Meshing-Purging
+Remote: origin
+Branch: main
+Remote URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Recovery URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Current Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Upstream Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Current Version: v1.1.2-12-gd657271f
+Upstream Version: v1.1.2-12-gd657271f
+Rollback Commit: c58f3d31adb16eaf963b84cb35c8ca72cc736245
+Rollback Branch: main
+Rollback Version: v1.1.2-8-gc58f3d31
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:02:17,570 [git_deploy.py:log_repo_info()] - Git Repo octoeverywhere Detected:
+Owner: QuinnDamerell
+Repository Name: OctoPrint-OctoEverywhere
+Path: /home/plutonasa/octoeverywhere
+Remote: origin
+Branch: master
+Remote URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Recovery URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Current Commit SHA: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Upstream Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Current Version: 3.2.1-14-g70eeaabc
+Upstream Version: 3.3.3
+Rollback Commit: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Rollback Branch: master
+Rollback Version: 3.2.1-14-g70eeaabc
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 8
+Diverged: False
+2024-05-06 23:02:17,572 [git_deploy.py:log_repo_info()] - Git Repo chopper-resonance-tuner Detected:
+Owner: ?
+Repository Name: ?
+Path: /
+Remote: ?
+Branch: ?
+Remote URL: ?
+Recovery URL: ?
+Current Commit SHA: ?
+Upstream Commit SHA: ?
+Current Version: ?
+Upstream Version: ?
+Rollback Commit: ?
+Rollback Branch: ?
+Rollback Version: ?
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Failed to detect git branch
+  Failed to detect repo url
+2024-05-06 23:02:17,579 [base_deploy.py:log_info()] - PackageKit: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 30 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo moonraker: Next refresh in: 6 Days, 23 Hours, 59 Minutes, 58 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo klipper: Next refresh in: 6 Days, 23 Hours, 59 Minutes, 47 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Web Client mainsail: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 46 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo mainsail-config: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 46 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo crowsnest: Next refresh in: 6 Days, 23 Hours, 59 Minutes, 40 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo sonar: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 48 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 49 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 50 Seconds
+2024-05-06 23:02:17,580 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Next refresh in: 6 Days, 22 Hours, 55 Minutes, 50 Seconds
+2024-05-06 23:02:17,583 [extensions.py:start_unix_server()] - Creating Unix Domain Socket at '/home/plutonasa/printer_data/comms/moonraker.sock'
+2024-05-06 23:02:17,584 [server.py:start_server()] - Starting Moonraker on (0.0.0.0, 7125), Hostname: mainsailEnder
+2024-05-06 23:02:17,586 [application.py:listen()] - SSL Certificate/Key not configured, aborting HTTPS Server startup
+2024-05-06 23:02:17,840 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 23:02:18,153 [server.py:add_log_rollover_item()] - Klipper Version: v0.12.0-179-g434770ea-dirty
+2024-05-06 23:02:18,166 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 23:02:18,168 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 23:02:18,364 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 10.109.242.125
+2024-05-06 23:02:18,367 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 3.79ms
+2024-05-06 23:02:18,367 [websockets.py:open()] - Websocket Opened: ID: 547490116608, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:02:18,369 [websockets.py:_handle_identify()] - Websocket 547490116608 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:02:18,418 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 23:02:18,679 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 23:02:18,763 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 1.72ms
+2024-05-06 23:02:18,763 [websockets.py:open()] - Websocket Opened: ID: 547490116272, Proxied: True, User Agent: BBL-Slicer/v01.08.04.51 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 10.109.242.110
+2024-05-06 23:02:18,766 [websockets.py:_handle_identify()] - Websocket 547490116272 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:02:18,919 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 1.86ms
+2024-05-06 23:02:18,920 [websockets.py:open()] - Websocket Opened: ID: 547480983296, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:02:18,924 [websockets.py:_handle_identify()] - Websocket 547480983296 Client Identified - Name: mainsail, Version: 2.10.0, Type: web
+2024-05-06 23:02:19,169 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 23:02:19,389 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-05-06 23:02:19,390 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 1.96ms
+2024-05-06 23:02:19,390 [websockets.py:open()] - Websocket Opened: ID: 547480984832, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:02:19,397 [websockets.py:_handle_identify()] - Websocket 547480984832 Client Identified - Name: OctoEverywhere, Version: 3.2.7, Type: agent
+2024-05-06 23:02:28,245 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere fetch origin --prune --progress) successfully finished
+2024-05-06 23:02:28,262 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:02:28,808 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere pull --progress origin fdcf10df7c4fd08560af8ac970c4142dfee343fa) successfully finished
+2024-05-06 23:02:30,263 [shell_command.py:_check_proc_success()] - Command (/home/plutonasa/octoeverywhere-env/bin/python -m pip --version) successfully finished
+2024-05-06 23:02:37,194 [shell_command.py:_check_proc_success()] - Command (/home/plutonasa/octoeverywhere-env/bin/python -m pip install -r /home/plutonasa/octoeverywhere/requirements.txt) successfully finished
+2024-05-06 23:02:37,221 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere status --porcelain -b) successfully finished
+2024-05-06 23:02:37,238 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere branch --list --no-color) successfully finished
+2024-05-06 23:02:37,268 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere remote get-url origin) successfully finished
+2024-05-06 23:02:37,284 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:02:37,300 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere rev-parse HEAD) successfully finished
+2024-05-06 23:02:37,318 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:02:37,341 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 23:02:37,358 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere rev-list HEAD..fdcf10df7c4fd08560af8ac970c4142dfee343fa --count) successfully finished
+2024-05-06 23:02:37,359 [git_deploy.py:log_repo_info()] - Git Repo octoeverywhere Detected:
+Owner: QuinnDamerell
+Repository Name: OctoPrint-OctoEverywhere
+Path: /home/plutonasa/octoeverywhere
+Remote: origin
+Branch: master
+Remote URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Recovery URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Current Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Upstream Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Current Version: 3.3.3-0-gfdcf10df
+Upstream Version: 3.3.3
+Rollback Commit: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Rollback Branch: master
+Rollback Version: 3.2.1-14-g70eeaabc
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:02:37,360 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Channel: beta
+2024-05-06 23:02:37,360 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Validity check for git repo passed
+2024-05-06 23:02:37,395 [websockets.py:write_to_socket()] - Websocket closed while writing: 547480984832
+2024-05-06 23:02:37,395 [websockets.py:on_close()] - Websocket Closed: ID: 547480984832 Close Code: None, Close Reason: None, Pong Time Elapsed: 8.00
+2024-05-06 23:02:39,147 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.48ms
+2024-05-06 23:02:39,148 [websockets.py:open()] - Websocket Opened: ID: 547480754400, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:02:39,155 [websockets.py:_handle_identify()] - Websocket 547480754400 Client Identified - Name: OctoEverywhere, Version: 3.3.3, Type: agent
+2024-05-06 23:02:53,981 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.44ms
+2024-05-06 23:02:53,982 [websockets.py:open()] - Websocket Opened: ID: 547480660768, Proxied: False, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:02:53,992 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-05-06 23:06:12,280 [base_deploy.py:log_info()] - PackageKit: Detected 0 package updates:
+
+2024-05-06 23:06:12,300 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker status --porcelain -b) successfully finished
+2024-05-06 23:06:12,318 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker branch --list --no-color) successfully finished
+2024-05-06 23:06:12,347 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker remote get-url origin) successfully finished
+2024-05-06 23:06:12,838 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:12,854 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:06:12,872 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-parse HEAD) successfully finished
+2024-05-06 23:06:12,899 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:12,913 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-parse origin/master) successfully finished
+2024-05-06 23:06:12,940 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:06:12,956 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/moonraker rev-list HEAD..ba9428558adc70ed8cb3cdcea1723358ead23741 --count) successfully finished
+2024-05-06 23:06:12,957 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/plutonasa/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Upstream Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Current Version: v0.8.0-354-gba942855
+Upstream Version: v0.8.0-354-gba942855
+Rollback Commit: c857e1a99f76777a3247bc47bfe5a5fceeaad947
+Rollback Branch: master
+Rollback Version: v0.8.0-331-gc857e1a9
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-05-06 23:06:12,957 [base_deploy.py:log_info()] - Git Repo moonraker: Channel: dev
+2024-05-06 23:06:12,957 [base_deploy.py:log_info()] - Git Repo moonraker: Validity check for git repo passed
+2024-05-06 23:06:12,991 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper status --porcelain -b) successfully finished
+2024-05-06 23:06:13,007 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper branch --list --no-color) successfully finished
+2024-05-06 23:06:13,036 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper remote get-url origin) successfully finished
+2024-05-06 23:06:13,541 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:13,559 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:06:13,575 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-parse HEAD) successfully finished
+2024-05-06 23:06:13,674 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:13,690 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-parse origin/master) successfully finished
+2024-05-06 23:06:13,782 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:06:13,800 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/klipper rev-list HEAD..434770eaf9d382cccba203a3475ace2dc0653d7b --count) successfully finished
+2024-05-06 23:06:13,801 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/plutonasa/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Recovery URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Upstream Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Current Version: v0.12.0-179-g434770ea
+Upstream Version: v0.12.0-179-g434770ea
+Rollback Commit: 0b329c5d28230e8ad19434840bde26f5fd332998
+Rollback Branch: master
+Rollback Version: v0.12.0-173-g0b329c5d
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+2024-05-06 23:06:13,801 [base_deploy.py:log_info()] - Git Repo klipper: Channel: dev
+2024-05-06 23:06:13,801 [base_deploy.py:log_info()] - Git Repo klipper: Validity check for git repo passed
+2024-05-06 23:06:13,803 [base_deploy.py:log_info()] - Web Client mainsail: Invalid Installation, aborting remote refresh
+2024-05-06 23:06:13,803 [base_deploy.py:log_info()] - Web Client mainsail: Detected
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/plutonasa/mainsail
+Local Version: v2.10.0
+Remote Version: v2.10.0
+Valid: False
+Fallback Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.10.0/mainsail.zip
+Download Size: 2081565
+Content Type: application/zip
+Rollback Version: v2.9.1
+Rollback Repo: mainsail-crew/mainsail
+Warnings:
+ Location at option 'path: /home/plutonasa/mainsail' is not writable.
+ Failed to validate installation
+2024-05-06 23:06:13,823 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config status --porcelain -b) successfully finished
+2024-05-06 23:06:13,839 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config branch --list --no-color) successfully finished
+2024-05-06 23:06:13,868 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config remote get-url origin) successfully finished
+2024-05-06 23:06:14,331 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:14,347 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:06:14,363 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config rev-parse HEAD) successfully finished
+2024-05-06 23:06:14,381 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:14,396 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config rev-parse origin/master) successfully finished
+2024-05-06 23:06:14,412 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:06:14,428 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/mainsail-config rev-list HEAD..e57810d51b5c634aadaca4db923bfcba269ae4b3 --count) successfully finished
+2024-05-06 23:06:14,429 [git_deploy.py:log_repo_info()] - Git Repo mainsail-config Detected:
+Owner: mainsail-crew
+Repository Name: mainsail-config
+Path: /home/plutonasa/mainsail-config
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/mainsail-config.git
+Recovery URL: https://github.com/mainsail-crew/mainsail-config.git
+Current Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Upstream Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Current Version: v1.2.1-0-ge57810d5
+Upstream Version: v1.2.1-0-ge57810d5
+Rollback Commit: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Rollback Branch: master
+Rollback Version: v1.2.1-0-ge57810d5
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:06:14,429 [base_deploy.py:log_info()] - Git Repo mainsail-config: Channel: dev
+2024-05-06 23:06:14,429 [base_deploy.py:log_info()] - Git Repo mainsail-config: Validity check for git repo passed
+2024-05-06 23:06:14,455 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest status --porcelain -b) successfully finished
+2024-05-06 23:06:14,470 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest branch --list --no-color) successfully finished
+2024-05-06 23:06:14,498 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest remote get-url origin) successfully finished
+2024-05-06 23:06:14,999 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:15,029 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:06:15,056 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-parse HEAD) successfully finished
+2024-05-06 23:06:15,087 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:15,108 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-parse origin/master) successfully finished
+2024-05-06 23:06:15,140 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:06:15,159 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/crowsnest rev-list HEAD..d75a3aeb018384e59d03518754f6148c98894ed9 --count) successfully finished
+2024-05-06 23:06:15,160 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/plutonasa/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Current Version: v4.1.9-1-gd75a3aeb
+Upstream Version: v4.1.9-1-gd75a3aeb
+Rollback Commit: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
+Rollback Branch: master
+Rollback Version: v4.1.8-1-g6ac4711e
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:06:15,161 [base_deploy.py:log_info()] - Git Repo crowsnest: Channel: dev
+2024-05-06 23:06:15,161 [base_deploy.py:log_info()] - Git Repo crowsnest: Validity check for git repo passed
+2024-05-06 23:06:15,182 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar status --porcelain -b) successfully finished
+2024-05-06 23:06:15,197 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar branch --list --no-color) successfully finished
+2024-05-06 23:06:15,226 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar remote get-url origin) successfully finished
+2024-05-06 23:06:15,695 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:15,711 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar merge-base --is-ancestor HEAD origin/main) successfully finished
+2024-05-06 23:06:15,726 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar rev-parse HEAD) successfully finished
+2024-05-06 23:06:15,744 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:15,762 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar rev-parse origin/main) successfully finished
+2024-05-06 23:06:15,778 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar describe origin/main --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:06:15,794 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/sonar rev-list HEAD..eacc498a52f79292063b6f9b0e0c191c34c5dc09 --count) successfully finished
+2024-05-06 23:06:15,796 [git_deploy.py:log_repo_info()] - Git Repo sonar Detected:
+Owner: mainsail-crew
+Repository Name: sonar
+Path: /home/plutonasa/sonar
+Remote: origin
+Branch: main
+Remote URL: https://github.com/mainsail-crew/sonar.git
+Recovery URL: https://github.com/mainsail-crew/sonar.git
+Current Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Upstream Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Current Version: v0.1.3-1-geacc498a
+Upstream Version: v0.1.3-1-geacc498a
+Rollback Commit: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Rollback Branch: main
+Rollback Version: v0.1.3-1-geacc498a
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:06:15,796 [base_deploy.py:log_info()] - Git Repo sonar: Channel: dev
+2024-05-06 23:06:15,796 [base_deploy.py:log_info()] - Git Repo sonar: Validity check for git repo passed
+2024-05-06 23:06:15,815 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging status --porcelain -b) successfully finished
+2024-05-06 23:06:15,831 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging branch --list --no-color) successfully finished
+2024-05-06 23:06:15,860 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging remote get-url origin) successfully finished
+2024-05-06 23:06:16,316 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:16,334 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging merge-base --is-ancestor HEAD origin/main) successfully finished
+2024-05-06 23:06:16,348 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging rev-parse HEAD) successfully finished
+2024-05-06 23:06:16,367 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:16,385 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging rev-parse origin/main) successfully finished
+2024-05-06 23:06:16,403 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging describe origin/main --always --tags --long --abbrev=8) successfully finished
+2024-05-06 23:06:16,419 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/Klipper-Adaptive-Meshing-Purging rev-list HEAD..d657271f13fc429b5ca36a4f8956b67c9ddf0558 --count) successfully finished
+2024-05-06 23:06:16,420 [git_deploy.py:log_repo_info()] - Git Repo Klipper-Adaptive-Meshing-Purging Detected:
+Owner: kyleisah
+Repository Name: Klipper-Adaptive-Meshing-Purging
+Path: /home/plutonasa/Klipper-Adaptive-Meshing-Purging
+Remote: origin
+Branch: main
+Remote URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Recovery URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Current Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Upstream Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Current Version: v1.1.2-12-gd657271f
+Upstream Version: v1.1.2-12-gd657271f
+Rollback Commit: c58f3d31adb16eaf963b84cb35c8ca72cc736245
+Rollback Branch: main
+Rollback Version: v1.1.2-8-gc58f3d31
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:06:16,420 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Channel: dev
+2024-05-06 23:06:16,420 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Validity check for git repo passed
+2024-05-06 23:06:16,444 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere status --porcelain -b) successfully finished
+2024-05-06 23:06:16,459 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere branch --list --no-color) successfully finished
+2024-05-06 23:06:16,487 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere remote get-url origin) successfully finished
+2024-05-06 23:06:17,049 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere fetch origin --prune --progress) successfully finished
+2024-05-06 23:06:17,065 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-05-06 23:06:17,082 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere rev-parse HEAD) successfully finished
+2024-05-06 23:06:17,099 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-05-06 23:06:17,122 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere for-each-ref --count=100 --sort='-creatordate' --contains=HEAD --merged=origin/master --format='%(if)%(*objecttype)%(then)%(*objecttype) %(*objectname)%(else)%(objecttype) %(objectname)%(end) %(refname)' 'refs/tags') successfully finished
+2024-05-06 23:06:17,140 [shell_command.py:_check_proc_success()] - Command (git -C /home/plutonasa/octoeverywhere rev-list HEAD..fdcf10df7c4fd08560af8ac970c4142dfee343fa --count) successfully finished
+2024-05-06 23:06:17,142 [git_deploy.py:log_repo_info()] - Git Repo octoeverywhere Detected:
+Owner: QuinnDamerell
+Repository Name: OctoPrint-OctoEverywhere
+Path: /home/plutonasa/octoeverywhere
+Remote: origin
+Branch: master
+Remote URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Recovery URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Current Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Upstream Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Current Version: 3.3.3-0-gfdcf10df
+Upstream Version: 3.3.3
+Rollback Commit: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Rollback Branch: master
+Rollback Version: 3.2.1-14-g70eeaabc
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:06:17,142 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Channel: beta
+2024-05-06 23:06:17,142 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Validity check for git repo passed
+2024-05-06 23:06:17,144 [git_deploy.py:_check_repo_status()] - Git Repo chopper-resonance-tuner: path '/' is not a valid git repo
+2024-05-06 23:06:17,144 [git_deploy.py:refresh_repo_state()] - Git Repo chopper-resonance-tuner: Initialization failure
+Traceback (most recent call last):
+  File "/home/plutonasa/moonraker/moonraker/components/update_manager/git_deploy.py", line 313, in refresh_repo_state
+    self._verify_repo()
+  File "/home/plutonasa/moonraker/moonraker/components/update_manager/git_deploy.py", line 724, in _verify_repo
+    raise self.server.error(
+moonraker.utils.ServerError: Git Repo chopper-resonance-tuner: repo not initialized
+2024-05-06 23:06:17,144 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Channel: dev
+2024-05-06 23:06:17,144 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Repo validation check failed, updates disabled
+2024-05-06 23:08:02,090 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2024-05-06 23:08:02,194 [websockets.py:on_close()] - Websocket Closed: ID: 547480754400 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 3.04
+2024-05-06 23:08:02,197 [websockets.py:write_to_socket()] - Websocket closed while writing: 547490116608
+2024-05-06 23:08:02,197 [websockets.py:write_to_socket()] - Websocket closed while writing: 547490116272
+2024-05-06 23:08:02,197 [websockets.py:write_to_socket()] - Websocket closed while writing: 547480983296
+2024-05-06 23:08:02,197 [websockets.py:write_to_socket()] - Websocket closed while writing: 547480660768
+2024-05-06 23:08:02,198 [websockets.py:on_close()] - Websocket Closed: ID: 547480660768 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 8.21
+2024-05-06 23:08:02,199 [websockets.py:on_close()] - Websocket Closed: ID: 547490116608 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 3.83
+2024-05-06 23:08:02,200 [websockets.py:on_close()] - Websocket Closed: ID: 547490116272 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 3.43
+2024-05-06 23:08:02,202 [websockets.py:on_close()] - Websocket Closed: ID: 547480983296 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 3.28
+2024-05-06 23:08:02,204 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 23:08:02,220 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 33
+overflow_pages: 0
+entries: 65
+history:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 43
+overflow_pages: 0
+entries: 83
+mainsail:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 9
+mobileraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 2
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 8
+octoeverywhere:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+update_manager:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 4
+overflow_pages: 0
+entries: 10
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2024-05-06 23:08:02,228 [server.py:main()] - Server Shutdown
+-------------------- Log Start | Tue May  7 04:08:02 2024 --------------------
+platform: Linux-6.1.21-v8+-aarch64-with-glibc2.31
+data_path: /home/plutonasa/printer_data
+is_default_data_path: False
+config_file: /home/plutonasa/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: True
+instance_uuid: 5c9b3819067a46c48b5e5922ec7f39ba
+unix_socket_path: /home/plutonasa/printer_data/comms/moonraker.sock
+software_version: v0.8.0-354-gba94285
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/plutonasa/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+launch_args: /home/plutonasa/moonraker-env/bin/python /home/plutonasa/moonraker/moonraker/__main__.py
+msgspec_enabled: False
+uvloop_enabled: False
+2024-05-06 23:08:02,827 [confighelper.py:read_file()] - Configuration File '/home/plutonasa/printer_data/config/moonraker.conf' parsed, total size: 3532 B
+2024-05-06 23:08:02,827 [server.py:add_log_rollover_item()] - 
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = True
+
+[authorization]
+cors_domains = 
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	octoeverywhere
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
+install_script = tools/install.sh
+
+[update_manager Klipper-Adaptive-Meshing-Purging]
+type = git_repo
+channel = dev
+path = ~/Klipper-Adaptive-Meshing-Purging
+origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+managed_services = klipper
+primary_branch = main
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/plutonasa/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/plutonasa/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
+
+[update_manager chopper-resonance-tuner]
+type = git_repo
+path = .
+origin = https://github.com/MRX8024/chopper-resonance-tuner.git
+primary_branch = main
+managed_services = klipper
+
+#################################################################
+All Configuration Files:
+/home/plutonasa/printer_data/config/moonraker.conf
+/home/plutonasa/printer_data/config/octoeverywhere-system.cfg
+#################################################################
+2024-05-06 23:08:02,905 [server.py:load_component()] - Component (secrets) loaded
+2024-05-06 23:08:02,911 [server.py:load_component()] - Component (template) loaded
+2024-05-06 23:08:02,917 [server.py:load_component()] - Component (klippy_connection) loaded
+2024-05-06 23:08:03,204 [server.py:load_component()] - Component (application) loaded
+2024-05-06 23:08:03,220 [server.py:load_component()] - Component (websockets) loaded
+2024-05-06 23:08:03,257 [server.py:load_component()] - Component (dbus_manager) loaded
+2024-05-06 23:08:03,267 [server.py:add_log_rollover_item()] - 
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 46
+2024-05-06 23:08:03,279 [server.py:load_component()] - Component (database) loaded
+2024-05-06 23:08:03,298 [file_manager.py:__init__()] - Using File System Observer: inotify
+2024-05-06 23:08:03,324 [server.py:load_component()] - Component (file_manager) loaded
+2024-05-06 23:08:03,345 [authorization.py:__init__()] - Authorization Configuration Loaded
+Trusted Clients:
+10.0.0.0/8
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.168.0.0/16
+fe80::/10
+::1/128
+CORS Domains:
+https://my\.mainsail\.xyz
+http://my\.mainsail\.xyz
+http://.*\.local
+http://.*\.lan
+2024-05-06 23:08:03,348 [server.py:load_component()] - Component (authorization) loaded
+2024-05-06 23:08:03,353 [server.py:load_component()] - Component (klippy_apis) loaded
+2024-05-06 23:08:03,538 [server.py:add_log_rollover_item()] - 
+System Info:
+
+***python***
+  version: (3, 9, 2, 'final', 0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab159ee1
+  hardware_desc: BCM2835
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 3705532
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 41
+  manufacturer: Unknown
+  oem_id: 3432
+  product_name: SD16G
+  product_revision: 2.0
+  serial_number: 000012ce
+  manufacturer_date: 10/2018
+  capacity: 14.6 GiB
+  total_bytes: 15640559616
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {'name': 'MainsailOS', 'version_id': '1.3.2', 'codename': 'bullseye', 'id': 'mainsailos'}
+  kernel_version: 6.1.21-v8+
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+2024-05-06 23:08:03,541 [server.py:load_component()] - Component (shell_command) loaded
+2024-05-06 23:08:03,541 [machine.py:__init__()] - Using System Provider: systemd_dbus
+2024-05-06 23:08:03,604 [server.py:add_log_rollover_item()] - Found libcamera Python module, version: v0.0.5+83-bde9b04f
+2024-05-06 23:08:03,605 [server.py:load_component()] - Component (machine) loaded
+2024-05-06 23:08:03,608 [server.py:load_component()] - Component (data_store) loaded
+2024-05-06 23:08:03,610 [proc_stats.py:__init__()] - Detected 'vcgencmd', throttle checking enabled
+2024-05-06 23:08:03,611 [server.py:load_component()] - Component (proc_stats) loaded
+2024-05-06 23:08:03,613 [server.py:load_component()] - Component (job_state) loaded
+2024-05-06 23:08:03,617 [server.py:load_component()] - Component (job_queue) loaded
+2024-05-06 23:08:03,621 [server.py:load_component()] - Component (history) loaded
+2024-05-06 23:08:03,627 [server.py:load_component()] - Component (http_client) loaded
+2024-05-06 23:08:03,632 [server.py:load_component()] - Component (announcements) loaded
+2024-05-06 23:08:03,634 [server.py:load_component()] - Component (webcam) loaded
+2024-05-06 23:08:03,637 [server.py:load_component()] - Component (extensions) loaded
+2024-05-06 23:08:03,642 [server.py:load_component()] - Component (octoprint_compat) loaded
+2024-05-06 23:08:03,685 [base_deploy.py:log_info()] - Git Repo moonraker: Detected virtualenv: /home/plutonasa/moonraker-env
+2024-05-06 23:08:03,688 [base_deploy.py:log_info()] - Git Repo klipper: Detected virtualenv: /home/plutonasa/klippy-env
+2024-05-06 23:08:03,697 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Option 'env' is deprecated, use 'virtualenv' instead.
+2024-05-06 23:08:03,698 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Detected virtualenv: /home/plutonasa/octoeverywhere-env
+2024-05-06 23:08:03,703 [server.py:load_component()] - Component (update_manager) loaded
+2024-05-06 23:08:03,705 [server.py:_initialize_component()] - Performing Component Post Init: [dbus_manager]
+2024-05-06 23:08:03,717 [server.py:_initialize_component()] - Performing Component Post Init: [file_manager]
+2024-05-06 23:08:03,775 [server.py:_initialize_component()] - Performing Component Post Init: [authorization]
+2024-05-06 23:08:03,775 [server.py:_initialize_component()] - Performing Component Post Init: [machine]
+2024-05-06 23:08:03,775 [machine.py:validation_init()] - Installation version in database up to date
+2024-05-06 23:08:04,017 [machine.py:check_virt_status()] - No Virtualization Detected
+2024-05-06 23:08:04,032 [machine.py:_find_public_ip()] - Detected Local IP: 10.109.242.110
+2024-05-06 23:08:04,035 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 23:08:04,088 [server.py:add_log_rollover_item()] - 
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', 'network-online.target']
+**After=['basic.target', 'systemd-journald.socket', 'klipper.service', 'system.slice', 'sysinit.target', 'network-online.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/moonraker.env
+**ExecStart=/home/plutonasa/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=plutonasa
+2024-05-06 23:08:04,088 [server.py:_initialize_component()] - Performing Component Post Init: [proc_stats]
+2024-05-06 23:08:04,088 [server.py:_initialize_component()] - Performing Component Post Init: [history]
+2024-05-06 23:08:04,091 [server.py:_initialize_component()] - Performing Component Post Init: [announcements]
+2024-05-06 23:08:04,092 [server.py:_initialize_component()] - Performing Component Post Init: [webcam]
+2024-05-06 23:08:04,092 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 23:08:04,093 [server.py:_initialize_component()] - Performing Component Post Init: [klippy_connection]
+2024-05-06 23:08:04,094 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['basic.target', 'system.slice', 'network-online.target', 'systemd-journald.socket', 'klipper-mcu.service', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/klipper.env
+**ExecStart=/home/plutonasa/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/plutonasa/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=plutonasa
+2024-05-06 23:08:04,094 [server.py:_initialize_component()] - Performing Component Post Init: [update_manager]
+2024-05-06 23:08:04,149 [base_deploy.py:log_info()] - PackageDeploy: PackageKit Provider Configured
+2024-05-06 23:08:04,150 [base_deploy.py:log_info()] - Git Repo moonraker: Stored pip version: 23.3.2
+2024-05-06 23:08:04,151 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/plutonasa/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Upstream Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Current Version: v0.8.0-354-gba942855
+Upstream Version: v0.8.0-354-gba942855
+Rollback Commit: c857e1a99f76777a3247bc47bfe5a5fceeaad947
+Rollback Branch: master
+Rollback Version: v0.8.0-331-gc857e1a9
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-05-06 23:08:04,152 [base_deploy.py:log_info()] - Git Repo klipper: Stored pip version: 23.3.2
+2024-05-06 23:08:04,153 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/plutonasa/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Recovery URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Upstream Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Current Version: v0.12.0-179-g434770ea
+Upstream Version: v0.12.0-179-g434770ea
+Rollback Commit: 0b329c5d28230e8ad19434840bde26f5fd332998
+Rollback Branch: master
+Rollback Version: v0.12.0-173-g0b329c5d
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+2024-05-06 23:08:04,157 [base_deploy.py:log_info()] - Web Client mainsail: Detected
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/plutonasa/mainsail
+Local Version: v2.10.0
+Remote Version: v2.10.0
+Valid: False
+Fallback Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.10.0/mainsail.zip
+Download Size: 2081565
+Content Type: application/zip
+Rollback Version: v2.9.1
+Rollback Repo: mainsail-crew/mainsail
+Warnings:
+ Location at option 'path: /home/plutonasa/mainsail' is not writable.
+ Failed to validate installation
+2024-05-06 23:08:04,158 [git_deploy.py:log_repo_info()] - Git Repo mainsail-config Detected:
+Owner: mainsail-crew
+Repository Name: mainsail-config
+Path: /home/plutonasa/mainsail-config
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/mainsail-config.git
+Recovery URL: https://github.com/mainsail-crew/mainsail-config.git
+Current Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Upstream Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Current Version: v1.2.1-0-ge57810d5
+Upstream Version: v1.2.1-0-ge57810d5
+Rollback Commit: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Rollback Branch: master
+Rollback Version: v1.2.1-0-ge57810d5
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:08:04,160 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/plutonasa/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Current Version: v4.1.9-1-gd75a3aeb
+Upstream Version: v4.1.9-1-gd75a3aeb
+Rollback Commit: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
+Rollback Branch: master
+Rollback Version: v4.1.8-1-g6ac4711e
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:08:04,161 [git_deploy.py:log_repo_info()] - Git Repo sonar Detected:
+Owner: mainsail-crew
+Repository Name: sonar
+Path: /home/plutonasa/sonar
+Remote: origin
+Branch: main
+Remote URL: https://github.com/mainsail-crew/sonar.git
+Recovery URL: https://github.com/mainsail-crew/sonar.git
+Current Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Upstream Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Current Version: v0.1.3-1-geacc498a
+Upstream Version: v0.1.3-1-geacc498a
+Rollback Commit: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Rollback Branch: main
+Rollback Version: v0.1.3-1-geacc498a
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:08:04,162 [git_deploy.py:log_repo_info()] - Git Repo Klipper-Adaptive-Meshing-Purging Detected:
+Owner: kyleisah
+Repository Name: Klipper-Adaptive-Meshing-Purging
+Path: /home/plutonasa/Klipper-Adaptive-Meshing-Purging
+Remote: origin
+Branch: main
+Remote URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Recovery URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Current Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Upstream Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Current Version: v1.1.2-12-gd657271f
+Upstream Version: v1.1.2-12-gd657271f
+Rollback Commit: c58f3d31adb16eaf963b84cb35c8ca72cc736245
+Rollback Branch: main
+Rollback Version: v1.1.2-8-gc58f3d31
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:08:04,163 [git_deploy.py:log_repo_info()] - Git Repo octoeverywhere Detected:
+Owner: QuinnDamerell
+Repository Name: OctoPrint-OctoEverywhere
+Path: /home/plutonasa/octoeverywhere
+Remote: origin
+Branch: master
+Remote URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Recovery URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Current Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Upstream Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Current Version: 3.3.3-0-gfdcf10df
+Upstream Version: 3.3.3
+Rollback Commit: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Rollback Branch: master
+Rollback Version: 3.2.1-14-g70eeaabc
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:08:04,165 [git_deploy.py:log_repo_info()] - Git Repo chopper-resonance-tuner Detected:
+Owner: ?
+Repository Name: ?
+Path: /
+Remote: ?
+Branch: ?
+Remote URL: ?
+Recovery URL: ?
+Current Commit SHA: ?
+Upstream Commit SHA: ?
+Current Version: ?
+Upstream Version: ?
+Rollback Commit: ?
+Rollback Branch: ?
+Rollback Version: ?
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Failed to detect git branch
+  Failed to detect repo url
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - PackageKit: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 8 Seconds
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - Git Repo moonraker: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 9 Seconds
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - Git Repo klipper: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 10 Seconds
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - Web Client mainsail: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 10 Seconds
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - Git Repo mainsail-config: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 10 Seconds
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - Git Repo crowsnest: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 11 Seconds
+2024-05-06 23:08:04,167 [base_deploy.py:log_info()] - Git Repo sonar: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 12 Seconds
+2024-05-06 23:08:04,168 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 12 Seconds
+2024-05-06 23:08:04,168 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 13 Seconds
+2024-05-06 23:08:04,168 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Next refresh in: 6 Days, 23 Hours, 58 Minutes, 13 Seconds
+2024-05-06 23:08:04,173 [extensions.py:start_unix_server()] - Creating Unix Domain Socket at '/home/plutonasa/printer_data/comms/moonraker.sock'
+2024-05-06 23:08:04,175 [server.py:start_server()] - Starting Moonraker on (0.0.0.0, 7125), Hostname: mainsailEnder
+2024-05-06 23:08:04,181 [application.py:listen()] - SSL Certificate/Key not configured, aborting HTTPS Server startup
+2024-05-06 23:08:04,209 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-05-06 23:08:04,212 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 7.37ms
+2024-05-06 23:08:04,213 [websockets.py:open()] - Websocket Opened: ID: 547435151120, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:08:04,220 [websockets.py:_handle_identify()] - Websocket 547435151120 Client Identified - Name: OctoEverywhere, Version: 3.3.3, Type: agent
+2024-05-06 23:08:04,433 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 23:08:04,744 [server.py:add_log_rollover_item()] - Klipper Version: v0.12.0-179-g434770ea-dirty
+2024-05-06 23:08:04,753 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 10.109.242.125
+2024-05-06 23:08:04,754 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.26ms
+2024-05-06 23:08:04,754 [websockets.py:open()] - Websocket Opened: ID: 547434529408, Proxied: True, User Agent: BBL-Slicer/v01.08.04.51 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 10.109.242.110
+2024-05-06 23:08:04,766 [websockets.py:_handle_identify()] - Websocket 547434529408 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:08:04,768 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 23:08:04,771 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 23:08:05,015 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 23:08:05,221 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.71ms
+2024-05-06 23:08:05,222 [websockets.py:open()] - Websocket Opened: ID: 547434530176, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:08:05,228 [websockets.py:_handle_identify()] - Websocket 547434530176 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:08:05,277 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 23:08:05,765 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 23:08:07,157 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.88ms
+2024-05-06 23:08:07,157 [websockets.py:open()] - Websocket Opened: ID: 547434531568, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:08:07,161 [websockets.py:_handle_identify()] - Websocket 547434531568 Client Identified - Name: mainsail, Version: 2.10.0, Type: web
+2024-05-06 23:12:09,917 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.22ms
+2024-05-06 23:12:09,918 [websockets.py:open()] - Websocket Opened: ID: 547434481552, Proxied: False, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:12:09,923 [file_manager.py:get_file_list()] - Updating File List <config>...
+-------------------- Log Start | Tue May  7 04:17:22 2024 --------------------
+platform: Linux-6.1.21-v8+-aarch64-with-glibc2.31
+data_path: /home/plutonasa/printer_data
+is_default_data_path: False
+config_file: /home/plutonasa/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: True
+instance_uuid: 5c9b3819067a46c48b5e5922ec7f39ba
+unix_socket_path: /home/plutonasa/printer_data/comms/moonraker.sock
+software_version: v0.8.0-354-gba94285
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/plutonasa/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+launch_args: /home/plutonasa/moonraker-env/bin/python /home/plutonasa/moonraker/moonraker/__main__.py
+msgspec_enabled: False
+uvloop_enabled: False
+2024-05-06 23:17:22,943 [confighelper.py:read_file()] - Configuration File '/home/plutonasa/printer_data/config/moonraker.conf' parsed, total size: 3532 B
+2024-05-06 23:17:22,943 [server.py:add_log_rollover_item()] - 
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = True
+
+[authorization]
+cors_domains = 
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	octoeverywhere
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+managed_services = crowsnest
+install_script = tools/pkglist.sh
+
+[update_manager sonar]
+type = git_repo
+path = ~/sonar
+origin = https://github.com/mainsail-crew/sonar.git
+primary_branch = main
+managed_services = sonar
+install_script = tools/install.sh
+
+[update_manager Klipper-Adaptive-Meshing-Purging]
+type = git_repo
+channel = dev
+path = ~/Klipper-Adaptive-Meshing-Purging
+origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+managed_services = klipper
+primary_branch = main
+
+[update_manager octoeverywhere]
+type = git_repo
+channel = beta
+path = /home/plutonasa/octoeverywhere
+origin = https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+env = /home/plutonasa/octoeverywhere-env/bin/python
+requirements = requirements.txt
+install_script = install.sh
+managed_services = 
+	octoeverywhere
+
+[update_manager chopper-resonance-tuner]
+type = git_repo
+path = .
+origin = https://github.com/MRX8024/chopper-resonance-tuner.git
+primary_branch = main
+managed_services = klipper
+
+#################################################################
+All Configuration Files:
+/home/plutonasa/printer_data/config/moonraker.conf
+/home/plutonasa/printer_data/config/octoeverywhere-system.cfg
+#################################################################
+2024-05-06 23:17:23,281 [server.py:load_component()] - Component (secrets) loaded
+2024-05-06 23:17:23,305 [server.py:load_component()] - Component (template) loaded
+2024-05-06 23:17:23,312 [server.py:load_component()] - Component (klippy_connection) loaded
+2024-05-06 23:17:25,062 [server.py:load_component()] - Component (application) loaded
+2024-05-06 23:17:25,191 [server.py:load_component()] - Component (websockets) loaded
+2024-05-06 23:17:25,616 [server.py:load_component()] - Component (dbus_manager) loaded
+2024-05-06 23:17:25,775 [server.py:add_log_rollover_item()] - 
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 47
+2024-05-06 23:17:25,832 [server.py:load_component()] - Component (database) loaded
+2024-05-06 23:17:25,927 [file_manager.py:__init__()] - Using File System Observer: inotify
+2024-05-06 23:17:26,096 [server.py:load_component()] - Component (file_manager) loaded
+2024-05-06 23:17:26,175 [authorization.py:__init__()] - Authorization Configuration Loaded
+Trusted Clients:
+10.0.0.0/8
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.168.0.0/16
+fe80::/10
+::1/128
+CORS Domains:
+https://my\.mainsail\.xyz
+http://my\.mainsail\.xyz
+http://.*\.local
+http://.*\.lan
+2024-05-06 23:17:26,178 [server.py:load_component()] - Component (authorization) loaded
+2024-05-06 23:17:26,188 [server.py:load_component()] - Component (klippy_apis) loaded
+2024-05-06 23:17:26,677 [server.py:add_log_rollover_item()] - 
+System Info:
+
+***python***
+  version: (3, 9, 2, 'final', 0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000ab159ee1
+  hardware_desc: BCM2835
+  model: Raspberry Pi 4 Model B Rev 1.5
+  total_memory: 3705532
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 41
+  manufacturer: Unknown
+  oem_id: 3432
+  product_name: SD16G
+  product_revision: 2.0
+  serial_number: 000012ce
+  manufacturer_date: 10/2018
+  capacity: 14.6 GiB
+  total_bytes: 15640559616
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {'name': 'MainsailOS', 'version_id': '1.3.2', 'codename': 'bullseye', 'id': 'mainsailos'}
+  kernel_version: 6.1.21-v8+
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+2024-05-06 23:17:26,684 [server.py:load_component()] - Component (shell_command) loaded
+2024-05-06 23:17:26,685 [machine.py:__init__()] - Using System Provider: systemd_dbus
+2024-05-06 23:17:26,827 [server.py:add_log_rollover_item()] - Found libcamera Python module, version: v0.0.5+83-bde9b04f
+2024-05-06 23:17:26,828 [server.py:load_component()] - Component (machine) loaded
+2024-05-06 23:17:26,833 [server.py:load_component()] - Component (data_store) loaded
+2024-05-06 23:17:26,838 [proc_stats.py:__init__()] - Detected 'vcgencmd', throttle checking enabled
+2024-05-06 23:17:26,840 [server.py:load_component()] - Component (proc_stats) loaded
+2024-05-06 23:17:26,843 [server.py:load_component()] - Component (job_state) loaded
+2024-05-06 23:17:26,850 [server.py:load_component()] - Component (job_queue) loaded
+2024-05-06 23:17:26,857 [server.py:load_component()] - Component (history) loaded
+2024-05-06 23:17:26,886 [server.py:load_component()] - Component (http_client) loaded
+2024-05-06 23:17:26,904 [server.py:load_component()] - Component (announcements) loaded
+2024-05-06 23:17:26,909 [server.py:load_component()] - Component (webcam) loaded
+2024-05-06 23:17:26,914 [server.py:load_component()] - Component (extensions) loaded
+2024-05-06 23:17:26,922 [server.py:load_component()] - Component (octoprint_compat) loaded
+2024-05-06 23:17:26,997 [base_deploy.py:log_info()] - Git Repo moonraker: Detected virtualenv: /home/plutonasa/moonraker-env
+2024-05-06 23:17:27,003 [base_deploy.py:log_info()] - Git Repo klipper: Detected virtualenv: /home/plutonasa/klippy-env
+2024-05-06 23:17:27,021 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Option 'env' is deprecated, use 'virtualenv' instead.
+2024-05-06 23:17:27,023 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Detected virtualenv: /home/plutonasa/octoeverywhere-env
+2024-05-06 23:17:27,034 [server.py:load_component()] - Component (update_manager) loaded
+2024-05-06 23:17:27,037 [server.py:_initialize_component()] - Performing Component Post Init: [dbus_manager]
+2024-05-06 23:17:27,058 [server.py:_initialize_component()] - Performing Component Post Init: [file_manager]
+2024-05-06 23:17:27,137 [server.py:_initialize_component()] - Performing Component Post Init: [authorization]
+2024-05-06 23:17:27,138 [server.py:_initialize_component()] - Performing Component Post Init: [machine]
+2024-05-06 23:17:27,138 [machine.py:validation_init()] - Installation version in database up to date
+2024-05-06 23:17:27,534 [machine.py:check_virt_status()] - No Virtualization Detected
+2024-05-06 23:17:27,552 [machine.py:_find_public_ip()] - Detected Local IP: 10.109.242.110
+2024-05-06 23:17:27,556 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 23:17:27,615 [server.py:add_log_rollover_item()] - 
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['network-online.target', 'system.slice', 'sysinit.target']
+**After=['network-online.target', 'system.slice', 'basic.target', 'systemd-journald.socket', 'sysinit.target', 'klipper.service']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/moonraker.env
+**ExecStart=/home/plutonasa/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=plutonasa
+2024-05-06 23:17:27,615 [server.py:_initialize_component()] - Performing Component Post Init: [proc_stats]
+2024-05-06 23:17:27,615 [server.py:_initialize_component()] - Performing Component Post Init: [history]
+2024-05-06 23:17:27,618 [server.py:_initialize_component()] - Performing Component Post Init: [announcements]
+2024-05-06 23:17:27,619 [server.py:_initialize_component()] - Performing Component Post Init: [webcam]
+2024-05-06 23:17:27,619 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://10.109.242.110
+2024-05-06 23:17:27,621 [server.py:_initialize_component()] - Performing Component Post Init: [klippy_connection]
+2024-05-06 23:17:27,621 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', 'system.slice', '-.mount']
+**After=['basic.target', 'system.slice', 'network-online.target', 'systemd-journald.socket', 'klipper-mcu.service', 'sysinit.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/klipper.env
+**ExecStart=/home/plutonasa/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/plutonasa/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=plutonasa
+2024-05-06 23:17:27,621 [server.py:_initialize_component()] - Performing Component Post Init: [update_manager]
+2024-05-06 23:17:28,171 [base_deploy.py:log_info()] - PackageDeploy: PackageKit Provider Configured
+2024-05-06 23:17:28,172 [base_deploy.py:log_info()] - Git Repo moonraker: Stored pip version: 23.3.2
+2024-05-06 23:17:28,173 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/plutonasa/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Upstream Commit SHA: ba9428558adc70ed8cb3cdcea1723358ead23741
+Current Version: v0.8.0-354-gba942855
+Upstream Version: v0.8.0-354-gba942855
+Rollback Commit: c857e1a99f76777a3247bc47bfe5a5fceeaad947
+Rollback Branch: master
+Rollback Version: v0.8.0-331-gc857e1a9
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+2024-05-06 23:17:28,173 [base_deploy.py:log_info()] - Git Repo klipper: Stored pip version: 23.3.2
+2024-05-06 23:17:28,174 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/plutonasa/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper.git
+Recovery URL: https://github.com/Klipper3d/klipper.git
+Current Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Upstream Commit SHA: 434770eaf9d382cccba203a3475ace2dc0653d7b
+Current Version: v0.12.0-179-g434770ea
+Upstream Version: v0.12.0-179-g434770ea
+Rollback Commit: 0b329c5d28230e8ad19434840bde26f5fd332998
+Rollback Branch: master
+Rollback Version: v0.12.0-173-g0b329c5d
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+2024-05-06 23:17:28,177 [base_deploy.py:log_info()] - Web Client mainsail: Detected
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/plutonasa/mainsail
+Local Version: v2.10.0
+Remote Version: v2.10.0
+Valid: False
+Fallback Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.10.0/mainsail.zip
+Download Size: 2081565
+Content Type: application/zip
+Rollback Version: v2.9.1
+Rollback Repo: mainsail-crew/mainsail
+Warnings:
+ Location at option 'path: /home/plutonasa/mainsail' is not writable.
+ Failed to validate installation
+2024-05-06 23:17:28,180 [git_deploy.py:log_repo_info()] - Git Repo mainsail-config Detected:
+Owner: mainsail-crew
+Repository Name: mainsail-config
+Path: /home/plutonasa/mainsail-config
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/mainsail-config.git
+Recovery URL: https://github.com/mainsail-crew/mainsail-config.git
+Current Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Upstream Commit SHA: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Current Version: v1.2.1-0-ge57810d5
+Upstream Version: v1.2.1-0-ge57810d5
+Rollback Commit: e57810d51b5c634aadaca4db923bfcba269ae4b3
+Rollback Branch: master
+Rollback Version: v1.2.1-0-ge57810d5
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:17:28,181 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/plutonasa/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Upstream Commit SHA: d75a3aeb018384e59d03518754f6148c98894ed9
+Current Version: v4.1.9-1-gd75a3aeb
+Upstream Version: v4.1.9-1-gd75a3aeb
+Rollback Commit: 6ac4711e17f6f7c51998d1f928166fdaee383bf7
+Rollback Branch: master
+Rollback Version: v4.1.8-1-g6ac4711e
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:17:28,182 [git_deploy.py:log_repo_info()] - Git Repo sonar Detected:
+Owner: mainsail-crew
+Repository Name: sonar
+Path: /home/plutonasa/sonar
+Remote: origin
+Branch: main
+Remote URL: https://github.com/mainsail-crew/sonar.git
+Recovery URL: https://github.com/mainsail-crew/sonar.git
+Current Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Upstream Commit SHA: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Current Version: v0.1.3-1-geacc498a
+Upstream Version: v0.1.3-1-geacc498a
+Rollback Commit: eacc498a52f79292063b6f9b0e0c191c34c5dc09
+Rollback Branch: main
+Rollback Version: v0.1.3-1-geacc498a
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:17:28,186 [git_deploy.py:log_repo_info()] - Git Repo Klipper-Adaptive-Meshing-Purging Detected:
+Owner: kyleisah
+Repository Name: Klipper-Adaptive-Meshing-Purging
+Path: /home/plutonasa/Klipper-Adaptive-Meshing-Purging
+Remote: origin
+Branch: main
+Remote URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Recovery URL: https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
+Current Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Upstream Commit SHA: d657271f13fc429b5ca36a4f8956b67c9ddf0558
+Current Version: v1.1.2-12-gd657271f
+Upstream Version: v1.1.2-12-gd657271f
+Rollback Commit: c58f3d31adb16eaf963b84cb35c8ca72cc736245
+Rollback Branch: main
+Rollback Version: v1.1.2-8-gc58f3d31
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:17:28,190 [git_deploy.py:log_repo_info()] - Git Repo octoeverywhere Detected:
+Owner: QuinnDamerell
+Repository Name: OctoPrint-OctoEverywhere
+Path: /home/plutonasa/octoeverywhere
+Remote: origin
+Branch: master
+Remote URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Recovery URL: https://github.com/QuinnDamerell/OctoPrint-OctoEverywhere.git
+Current Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Upstream Commit SHA: fdcf10df7c4fd08560af8ac970c4142dfee343fa
+Current Version: 3.3.3-0-gfdcf10df
+Upstream Version: 3.3.3
+Rollback Commit: 70eeaabc2456d94503c12c8468d4d0537cd3819c
+Rollback Branch: master
+Rollback Version: 3.2.1-14-g70eeaabc
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-05-06 23:17:28,192 [git_deploy.py:log_repo_info()] - Git Repo chopper-resonance-tuner Detected:
+Owner: ?
+Repository Name: ?
+Path: /
+Remote: ?
+Branch: ?
+Remote URL: ?
+Recovery URL: ?
+Current Commit SHA: ?
+Upstream Commit SHA: ?
+Current Version: ?
+Upstream Version: ?
+Rollback Commit: ?
+Rollback Branch: ?
+Rollback Version: ?
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Failed to detect git branch
+  Failed to detect repo url
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - PackageKit: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 44 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo moonraker: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 45 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo klipper: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 46 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Web Client mainsail: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 46 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo mainsail-config: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 46 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo crowsnest: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 47 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo sonar: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 48 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo Klipper-Adaptive-Meshing-Purging: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 48 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo octoeverywhere: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 49 Seconds
+2024-05-06 23:17:28,193 [base_deploy.py:log_info()] - Git Repo chopper-resonance-tuner: Next refresh in: 6 Days, 23 Hours, 48 Minutes, 49 Seconds
+2024-05-06 23:17:28,197 [extensions.py:start_unix_server()] - Creating Unix Domain Socket at '/home/plutonasa/printer_data/comms/moonraker.sock'
+2024-05-06 23:17:28,198 [server.py:start_server()] - Starting Moonraker on (0.0.0.0, 7125), Hostname: mainsailEnder
+2024-05-06 23:17:28,200 [application.py:listen()] - SSL Certificate/Key not configured, aborting HTTPS Server startup
+2024-05-06 23:17:28,240 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 10.109.242.125
+2024-05-06 23:17:28,244 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 4.51ms
+2024-05-06 23:17:28,244 [websockets.py:open()] - Websocket Opened: ID: 547879635120, Proxied: False, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:17:28,249 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 2.66ms
+2024-05-06 23:17:28,250 [websockets.py:open()] - Websocket Opened: ID: 547879139504, Proxied: True, User Agent: BBL-Slicer/v01.08.04.51 (dark) Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52, Host Name: 10.109.242.110
+2024-05-06 23:17:28,254 [websockets.py:_handle_identify()] - Websocket 547879139504 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:17:28,259 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-05-06 23:17:28,453 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 23:17:28,540 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'system.slice', 'sysinit.target']
+**After=['sysinit.target', 'basic.target', 'systemd-journald.socket', 'klipper-mcu.service', 'system.slice', 'network-online.target', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/plutonasa/printer_data/systemd/klipper.env
+**ExecStart=/home/plutonasa/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/plutonasa/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=plutonasa
+2024-05-06 23:17:28,683 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 3.86ms
+2024-05-06 23:17:28,683 [websockets.py:open()] - Websocket Opened: ID: 547879704560, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:17:28,687 [websockets.py:_handle_identify()] - Websocket 547879704560 Client Identified - Name: OctoEverywhere-BrowserAgent, Version: 1.0.0, Type: web
+2024-05-06 23:17:28,797 [server.py:add_log_rollover_item()] - Klipper Version: v0.12.0-179-g434770ea-dirty
+2024-05-06 23:17:28,817 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 23:17:28,819 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 23:17:29,065 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 23:17:29,178 [application.py:log_request()] - 101 GET /websocket (10.109.242.125) [_TRUSTED_USER_] 1.91ms
+2024-05-06 23:17:29,179 [websockets.py:open()] - Websocket Opened: ID: 547879777136, Proxied: True, User Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0, Host Name: 10.109.242.110
+2024-05-06 23:17:29,183 [websockets.py:_handle_identify()] - Websocket 547879777136 Client Identified - Name: mainsail, Version: 2.10.0, Type: web
+2024-05-06 23:17:30,050 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 127.0.0.1
+2024-05-06 23:17:30,053 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 106.52ms
+2024-05-06 23:17:30,053 [websockets.py:open()] - Websocket Opened: ID: 547878282576, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:17:30,073 [websockets.py:_handle_identify()] - Websocket 547878282576 Client Identified - Name: OctoEverywhere, Version: 3.3.3, Type: agent
+2024-05-06 23:17:30,083 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 23:17:30,125 [file_manager.py:get_file_list()] - Updating File List <config>...
+2024-05-06 23:17:31,327 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 23:25:35,312 [websockets.py:on_close()] - Websocket Closed: ID: 547879635120 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 7.06
+2024-05-06 23:30:50,458 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 23:30:50,463 [websockets.py:on_close()] - Websocket Closed: ID: 547878282576 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 0.41
+2024-05-06 23:30:51,719 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 23:30:52,479 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.35ms
+2024-05-06 23:30:52,479 [websockets.py:open()] - Websocket Opened: ID: 547878311872, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:30:52,487 [websockets.py:_handle_identify()] - Websocket 547878311872 Client Identified - Name: OctoEverywhere, Version: 3.3.3, Type: agent
+2024-05-06 23:30:55,413 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 23:30:55,416 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 23:30:55,665 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 23:30:55,931 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 23:30:56,430 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
+2024-05-06 23:31:05,076 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-05-06 23:31:05,084 [websockets.py:on_close()] - Websocket Closed: ID: 547878311872 Close Code: 1000, Close Reason: None, Pong Time Elapsed: 2.60
+2024-05-06 23:31:06,339 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-05-06 23:31:07,101 [application.py:log_request()] - 101 GET /websocket (127.0.0.1) [_TRUSTED_USER_] 2.45ms
+2024-05-06 23:31:07,101 [websockets.py:open()] - Websocket Opened: ID: 547878470464, Proxied: False, User Agent: , Host Name: 0.0.0.0
+2024-05-06 23:31:07,109 [websockets.py:_handle_identify()] - Websocket 547878470464 Client Identified - Name: OctoEverywhere, Version: 3.3.3, Type: agent
+2024-05-06 23:31:10,044 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-05-06 23:31:10,046 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-05-06 23:31:10,296 [job_state.py:_handle_started()] - Job state initialized: standby
+2024-05-06 23:31:10,557 [klippy_connection.py:_check_ready()] - Klippy ready
+2024-05-06 23:31:11,060 [data_store.py:_init_sensors()] - Configuring available sensors: ['heater_bed', 'extruder']
